@@ -5,24 +5,111 @@
     <url>/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>介绍如何安装Hexo及下载主题和配置主题，并且上传到Github成功访问</p>
 <span id="more"></span>
-<h3 id="1-下载Hexo-打开cmd窗口"><a href="#1-下载Hexo-打开cmd窗口" class="headerlink" title="1. 下载Hexo 打开cmd窗口"></a>1. <strong>下载Hexo</strong> 打开cmd窗口</h3><br/>
-
+<h2 id="1-下载Hexo"><a href="#1-下载Hexo" class="headerlink" title="1. 下载Hexo"></a>1. 下载Hexo</h2><p>打开cmd窗口  </p>
 <pre><code>npm intall -g hexo
 </code></pre>
 <br/>
 
-<h3 id="2-然后进入你要创建博客的文件中初始化"><a href="#2-然后进入你要创建博客的文件中初始化" class="headerlink" title="2.然后进入你要创建博客的文件中初始化"></a>2.然后进入你要创建博客的文件中初始化</h3><br/>
-
+<h2 id="2-文件初始化"><a href="#2-文件初始化" class="headerlink" title="2. 文件初始化"></a>2. 文件初始化</h2><p>进入你要创建博客的文件夹中</p>
 <pre><code>hexo init #初始化项目
 hexo clean #清除缓存
 hexo g #生成静态文件
 hexo s #启动端口并预览 http://localhost:4000/
 </code></pre>
-<br/>
-
 
 
 <p><img src="/images/source/hexoInit.png" alt="Hexo第一次初始化的博客" title="Philadelphia&#39;s Magic Gardens"></p>
+<h2 id="3-将Hexo部署到Github"><a href="#3-将Hexo部署到Github" class="headerlink" title="3. 将Hexo部署到Github"></a>3. 将Hexo部署到Github</h2><h3 id="1-Github创建个人仓库"><a href="#1-Github创建个人仓库" class="headerlink" title="1. Github创建个人仓库"></a>1. Github创建个人仓库</h3><blockquote>
+<p>首先，需要有一个github账号。登上账号后建一个仓库：仓库名为你的用户名.github.io，<br>举例如下：<br>创建一个和你用户名相同的仓库，后面加.github.io，<br>只有这样，将来要部署到GitHub的时候，才会被识别，也就是xxxx.</p>
+</blockquote>
+<p><img src="/images/source/resdory.png" alt="Github创建个人仓库" title="Github创建个人仓库"></p>
+<h3 id="2-生成ssh添加到Github"><a href="#2-生成ssh添加到Github" class="headerlink" title="2. 生成ssh添加到Github"></a>2. 生成ssh添加到Github</h3><p>打开cmd窗口，执行如下命令</p>
+<pre><code>git config --global user.name &quot;yourname&quot;
+git config --global user.email &quot;youremail&quot;
+</code></pre>
+<p>防止输错可以检查：</p>
+<pre><code>git config user.name
+git config user.email
+</code></pre>
+<p>接着就会发现C:\Users\libinbin下多了一个.ssh目录，打开后有一个公钥，一个私钥。id_rsa.pub是公钥，我们需要打开它，复制里面的内容。</p>
+<p>然后进入github：<br>点击setings</p>
+<p>进行以下操作</p>
+<p><img src="/images/source/ssh1.png" alt="设置SSH" title="设置SSH"></p>
+<p>发现我们需要一个密钥，把我们刚刚复制的密钥粘进去，title随便起</p>
+<p><img src="/images/source/ssh2.png" alt="设置SSH" title="设置SSH"></p>
+<h3 id="3-进行部署"><a href="#3-进行部署" class="headerlink" title="3. 进行部署"></a>3. 进行部署</h3><p>修改根目录的配置文件_config.yml</p>
+<pre><code>deploy:
+    type: git
+    repo: git@github.com:goubin18/goubin18.github.io.git
+    branch: main
+</code></pre>
+<h3 id="4-安装deploy-git-也就是部署命令，这样你才能用命令部署到GitHub"><a href="#4-安装deploy-git-也就是部署命令，这样你才能用命令部署到GitHub" class="headerlink" title="4. 安装deploy-git,也就是部署命令，这样你才能用命令部署到GitHub"></a>4. 安装deploy-git,也就是部署命令，这样你才能用命令部署到GitHub</h3><pre><code>npm install hexo-deployer-git --save
+</code></pre>
+<h3 id="5-然后依次执行以下命令："><a href="#5-然后依次执行以下命令：" class="headerlink" title="5. 然后依次执行以下命令："></a>5. 然后依次执行以下命令：</h3><pre><code>hexo c   #清除缓存文件 db.json 和已生成的静态文件 public
+hexo g       #生成网站静态文件到默认设置的 public 文件夹(hexo generate 的缩写)
+hexo d       #自动生成网站静态文件，并部署到设定的仓库(hexo deploy 的缩写)
+</code></pre>
+<blockquote>
+<p>例如：我的用户名是lixiaolong521，那么我的博客地址就是lixiaolong521.github.io</p>
+</blockquote>
+<h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><h3 id="1-fatal-unable-to-access"><a href="#1-fatal-unable-to-access" class="headerlink" title="1. fatal: unable to access"></a>1. fatal: unable to access</h3><p><img src="/images/source/gitError1.png" alt="fatal: unable to access" title="fatal: unable to access"><br>解决方案：把_config.yml中的git仓库链接改成了ssh链接</p>
+<h3 id="2-安装插件"><a href="#2-安装插件" class="headerlink" title="2. 安装插件"></a>2. 安装插件</h3><h5 id="添加Live2d小人（在根目录而不是主题根目录）"><a href="#添加Live2d小人（在根目录而不是主题根目录）" class="headerlink" title="添加Live2d小人（在根目录而不是主题根目录）"></a>添加Live2d小人（在根目录而不是主题根目录）</h5><pre><code>npm install --save hexo-helper-live2d
+</code></pre>
+<h5 id="添加配置文件（根目录-config-yml）"><a href="#添加配置文件（根目录-config-yml）" class="headerlink" title="添加配置文件（根目录_config.yml）"></a>添加配置文件（根目录_config.yml）</h5><pre><code>live2d:
+enable: true  # 是否启动
+scriptFrom: local # 默认
+pluginRootPath: live2dw/  # 插件在站点上的根目录(相对路径)
+pluginJsPath: lib/  # 脚本文件相对与插件根目录路径
+pluginModelPath: assets/  # 模型文件相对与插件根目录路径
+tagMode: false  # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+debug: false  # 调试, 是否在控制台输出日志
+model:
+    use: live2d-widget  ## 模型文件
+display:
+    position: right # 定位方向 left right top bottom
+    width: 150  # 小人宽度
+    height: 300 #  小人高度
+    hOffset: -15  # 向 偏移
+    vOffset: -15  # 像 偏移
+mobile:
+    show: true  # 手机端是否显示
+react:
+    opacity: 0.7  # 模型透明度
+</code></pre>
+<h5 id="选择你喜欢的模型"><a href="#选择你喜欢的模型" class="headerlink" title="选择你喜欢的模型"></a>选择你喜欢的模型</h5><pre><code>live2d-widget-model-chitose
+live2d-widget-model-epsilon2_1
+live2d-widget-model-gf
+live2d-widget-model-haru/01 (use npm install --save live2d-widget-model-haru)
+live2d-widget-model-haru/02 (use npm install --save live2d-widget-model-haru)
+live2d-widget-model-haruto
+live2d-widget-model-hibiki
+live2d-widget-model-hijiki
+live2d-widget-model-izumi
+live2d-widget-model-koharu
+live2d-widget-model-miku
+live2d-widget-model-ni-j
+live2d-widget-model-nico
+live2d-widget-model-nietzsche
+live2d-widget-model-nipsilon
+live2d-widget-model-nito
+live2d-widget-model-shizuku
+live2d-widget-model-tororo
+live2d-widget-model-tsumiki
+live2d-widget-model-unitychan
+live2d-widget-model-wanko
+live2d-widget-model-z16
+</code></pre>
+<p>然后通过npm install –save live2d-widget-model-xxx来安装你喜欢的模型 比方说作者喜欢的是koharu这个那就使用npm install –save live2d-widget-model-koharu进行安装</p>
+<p>安装后把配置里的这条修改成安装的模型名字</p>
+<pre><code>model:
+use: live2d-widget-model-koharu
+</code></pre>
+<p>然后使用</p>
+<pre><code>hexo clean
+hexo g
+hexo s
+</code></pre>
+<p>就可以预览了</p>
 ]]></content>
       <categories>
         <category>博客</category>
@@ -31,6 +118,20 @@ hexo s #启动端口并预览 http://localhost:4000/
         <tag>Hexo</tag>
         <tag>yern</tag>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue 在系统上禁止运行脚本</title>
+    <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<ol>
+<li>首先需要在编译器终端中执行命令：<strong>get-ExecutionPolicy</strong>，<br>终端返回 ：<strong>Restricted</strong>   &#x2F;&#x2F;表示脚本被禁止，无法使用</li>
+<li>在命令行打入命令  <strong>set-ExecutionPolicy RemoteSigned：</strong>&#x2F;&#x2F;设置执行策略为RemoteSigned。<br><strong>如果显示没有权限修改 注意用管理员身份运行编辑器（vscode或hbuilder等）</strong></li>
+<li>然后我们再执行 <strong>get-ExecutionPolicy</strong><br>显示<strong>RemoteSigned</strong>，即表示可以正常执行脚本命令了。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -47,20 +148,6 @@ hexo s #启动端口并预览 http://localhost:4000/
         <tag>Postman</tag>
         <tag>汉化</tag>
         <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue 在系统上禁止运行脚本</title>
-    <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<ol>
-<li>首先需要在编译器终端中执行命令：<strong>get-ExecutionPolicy</strong>，<br>终端返回 ：<strong>Restricted</strong>   &#x2F;&#x2F;表示脚本被禁止，无法使用</li>
-<li>在命令行打入命令  <strong>set-ExecutionPolicy RemoteSigned：</strong>&#x2F;&#x2F;设置执行策略为RemoteSigned。<br><strong>如果显示没有权限修改 注意用管理员身份运行编辑器（vscode或hbuilder等）</strong></li>
-<li>然后我们再执行 <strong>get-ExecutionPolicy</strong><br>显示<strong>RemoteSigned</strong>，即表示可以正常执行脚本命令了。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
