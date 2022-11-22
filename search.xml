@@ -1,62 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>关于电脑显示“没有被指定在windows上运行，或者它包含错误”怎么解决？</title>
-    <url>/2022/11/21/%E5%85%B3%E4%BA%8E%E7%94%B5%E8%84%91%E6%98%BE%E7%A4%BA%E2%80%9C%E6%B2%A1%E6%9C%89%E8%A2%AB%E6%8C%87%E5%AE%9A%E5%9C%A8windows%E4%B8%8A%E8%BF%90%E8%A1%8C%EF%BC%8C%E6%88%96%E8%80%85%E5%AE%83%E5%8C%85%E5%90%AB%E9%94%99%E8%AF%AF%E2%80%9D%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F/</url>
-    <content><![CDATA[<ol>
-<li><p>首先需要找到并右击名称为“菜单”按钮，接着需要在接下来弹出来的下拉菜单中的下方，找到并点击名称为”运行“按钮：</p>
-</li>
-<li><p>接着需要在接下来弹出来的页面框中输入“CMD”命令符，点击“确定”按钮：</p>
-<span id="more"></span>
-</li>
-<li><p>接着只需要输入“for %1 in (%windir%\system32\*.dll) do regsvr32.exe &#x2F;s %1”命令按下回车键：</p>
-</li>
-<li><p>最后重启电脑桌面上就不会显示“没有被指定在windows上运行，或者它包含错误”即可解决问题了</p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>技术</category>
-      </categories>
-      <tags>
-        <tag>windows系统</tag>
-        <tag>方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Postman汉化</title>
-    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
-    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
-<span id="more"></span>
-<ol>
-<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
-<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Postman</tag>
-        <tag>汉化</tag>
-        <tag>软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue 在系统上禁止运行脚本</title>
-    <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
-    <content><![CDATA[<ol>
-<li>首先需要在编译器终端中执行命令：<strong>get-ExecutionPolicy</strong>，<br>终端返回 ：<strong>Restricted</strong>   &#x2F;&#x2F;表示脚本被禁止，无法使用</li>
-<li>在命令行打入命令  <strong>set-ExecutionPolicy RemoteSigned：</strong>&#x2F;&#x2F;设置执行策略为RemoteSigned。<br><strong>如果显示没有权限修改 注意用管理员身份运行编辑器（vscode或hbuilder等）</strong></li>
-<li>然后我们再执行 <strong>get-ExecutionPolicy</strong><br>显示<strong>RemoteSigned</strong>，即表示可以正常执行脚本命令了。</li>
-</ol>
-]]></content>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo及主题的相关配置</title>
     <url>/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h3 id="1-下载Hexo-打开cmd窗口"><a href="#1-下载Hexo-打开cmd窗口" class="headerlink" title="1. 下载Hexo 打开cmd窗口"></a>1. <strong>下载Hexo</strong> 打开cmd窗口</h3><br/>
+    <content><![CDATA[<p>介绍如何安装Hexo及下载主题和配置主题，并且上传到Github成功访问</p>
+<span id="more"></span>
+<h3 id="1-下载Hexo-打开cmd窗口"><a href="#1-下载Hexo-打开cmd窗口" class="headerlink" title="1. 下载Hexo 打开cmd窗口"></a>1. <strong>下载Hexo</strong> 打开cmd窗口</h3><br/>
 
 <pre><code>npm intall -g hexo
 </code></pre>
@@ -82,6 +31,59 @@ hexo s #启动端口并预览 http://localhost:4000/
         <tag>Hexo</tag>
         <tag>yern</tag>
         <tag>博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue 在系统上禁止运行脚本</title>
+    <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
+    <content><![CDATA[<ol>
+<li>首先需要在编译器终端中执行命令：<strong>get-ExecutionPolicy</strong>，<br>终端返回 ：<strong>Restricted</strong>   &#x2F;&#x2F;表示脚本被禁止，无法使用</li>
+<li>在命令行打入命令  <strong>set-ExecutionPolicy RemoteSigned：</strong>&#x2F;&#x2F;设置执行策略为RemoteSigned。<br><strong>如果显示没有权限修改 注意用管理员身份运行编辑器（vscode或hbuilder等）</strong></li>
+<li>然后我们再执行 <strong>get-ExecutionPolicy</strong><br>显示<strong>RemoteSigned</strong>，即表示可以正常执行脚本命令了。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Postman汉化</title>
+    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
+    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
+<span id="more"></span>
+<ol>
+<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
+<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Postman</tag>
+        <tag>汉化</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于电脑显示“没有被指定在windows上运行，或者它包含错误”怎么解决？</title>
+    <url>/2022/11/21/%E5%85%B3%E4%BA%8E%E7%94%B5%E8%84%91%E6%98%BE%E7%A4%BA%E2%80%9C%E6%B2%A1%E6%9C%89%E8%A2%AB%E6%8C%87%E5%AE%9A%E5%9C%A8windows%E4%B8%8A%E8%BF%90%E8%A1%8C%EF%BC%8C%E6%88%96%E8%80%85%E5%AE%83%E5%8C%85%E5%90%AB%E9%94%99%E8%AF%AF%E2%80%9D%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3%EF%BC%9F/</url>
+    <content><![CDATA[<ol>
+<li><p>首先需要找到并右击名称为“菜单”按钮，接着需要在接下来弹出来的下拉菜单中的下方，找到并点击名称为”运行“按钮：</p>
+</li>
+<li><p>接着需要在接下来弹出来的页面框中输入“CMD”命令符，点击“确定”按钮：</p>
+<span id="more"></span>
+</li>
+<li><p>接着只需要输入“for %1 in (%windir%\system32\*.dll) do regsvr32.exe &#x2F;s %1”命令按下回车键：</p>
+</li>
+<li><p>最后重启电脑桌面上就不会显示“没有被指定在windows上运行，或者它包含错误”即可解决问题了</p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>windows系统</tag>
+        <tag>方法</tag>
       </tags>
   </entry>
 </search>
