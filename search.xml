@@ -24,6 +24,22 @@
       </tags>
   </entry>
   <entry>
+    <title>Postman汉化</title>
+    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
+    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
+<span id="more"></span>
+<ol>
+<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
+<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
+</ol>
+]]></content>
+      <tags>
+        <tag>Postman</tag>
+        <tag>汉化</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue 在系统上禁止运行脚本</title>
     <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<ol>
@@ -38,19 +54,34 @@
       </tags>
   </entry>
   <entry>
-    <title>Postman汉化</title>
-    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
-    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
-<span id="more"></span>
-<ol>
-<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
-<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
-</ol>
+    <title>Hexo及主题的相关配置</title>
+    <url>/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
+    <content><![CDATA[<h3 id="1-下载Hexo-打开cmd窗口"><a href="#1-下载Hexo-打开cmd窗口" class="headerlink" title="1. 下载Hexo 打开cmd窗口"></a>1. <strong>下载Hexo</strong> 打开cmd窗口</h3><br/>
+
+<pre><code>npm intall -g hexo
+</code></pre>
+<br/>
+
+<h3 id="2-然后进入你要创建博客的文件中初始化"><a href="#2-然后进入你要创建博客的文件中初始化" class="headerlink" title="2.然后进入你要创建博客的文件中初始化"></a>2.然后进入你要创建博客的文件中初始化</h3><br/>
+
+<pre><code>hexo init #初始化项目
+hexo clean #清除缓存
+hexo g #生成静态文件
+hexo s #启动端口并预览 http://localhost:4000/
+</code></pre>
+<br/>
+
+
+
+<p><img src="/images/source/hexoInit.png" alt="Hexo第一次初始化的博客" title="Philadelphia&#39;s Magic Gardens"></p>
 ]]></content>
+      <categories>
+        <category>博客</category>
+      </categories>
       <tags>
-        <tag>Postman</tag>
-        <tag>汉化</tag>
-        <tag>软件</tag>
+        <tag>Hexo</tag>
+        <tag>yern</tag>
+        <tag>博客</tag>
       </tags>
   </entry>
 </search>
