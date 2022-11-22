@@ -218,6 +218,61 @@
 
     
     <article
+  id="post-vue-在系统上禁止运行脚本"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    <!--    -->
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"
+    >vue 在系统上禁止运行脚本</a> 
+</h2>
+ 
+
+      
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/" class="article-date">
+  <time datetime="2022-11-22T04:02:07.000Z" itemprop="datePublished">2022-11-22</time>
+</a>    
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <ol>
+<li>首先需要在编译器终端中执行命令：<strong>get-ExecutionPolicy</strong>，<br>终端返回 ：<strong>Restricted</strong>   &#x2F;&#x2F;表示脚本被禁止，无法使用</li>
+<li>在命令行打入命令  <strong>set-ExecutionPolicy RemoteSigned：</strong>&#x2F;&#x2F;设置执行策略为RemoteSigned。<br><strong>如果显示没有权限修改 注意用管理员身份运行编辑器（vscode或hbuilder等）</strong></li>
+<li>然后我们再执行 <strong>get-ExecutionPolicy</strong><br>显示<strong>RemoteSigned</strong>，即表示可以正常执行脚本命令了。</li>
+</ol>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Error/" rel="tag">Error</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li></ul>
+
+    </footer>
+  </div>
+
+   
+   
+  
+</article>
+
+    
+    <article
   id="post-Postman汉化"
   class="article article-type-post"
   itemscope
