@@ -312,15 +312,16 @@ body.darkmode #friends_link .friends_li a {
 }
 
 a {
-    color: #0681d0
+    color: #ff5252;
+    text-decoration: none;
 }
 
 a:hover {
-    color: #19a1f8
+    color: #ff5252
 }
 
 a:active {
-    color: #067bc6
+    color: #ff5252
 }
 
 a.disabled {
@@ -759,7 +760,7 @@ button {
     line-height: 30px;
     padding: 0 15px;
     font-size: 1.5rem;
-    border-radius: 15px;
+    border-radius: 2px;
     background-color: #ff6057;
     color: #fff;
     box-shadow: 0 3px 5px rgba(0, 0, 0, .12);
@@ -1013,7 +1014,7 @@ button {
 
 .search-result-list li em.search-keyword {
     font-style: normal;
-    color: #0681d0
+    color: #fff
 }
 
 .search-result-empty {
@@ -1048,7 +1049,7 @@ button {
     display: inline-block;
     margin-left: 10px;
     padding: 0 10px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-style: normal;
     font-size: 12px;
     background-color: #ea434a;
@@ -1220,7 +1221,7 @@ button {
     line-height: 18px;
     padding: 0 8px;
     position: relative;
-    border-radius: 9px;
+    border-radius: 2px;
     background-color: #ff6057
 }
 
@@ -1684,7 +1685,8 @@ a.toc-link {
 .articles .article-entry {
     margin-top: 1rem;
     padding: 0 2rem 2rem;
-    border: 1px dashed #dfdede
+    border: 1px dashed #dfdede;
+    border-radius: 2px;
 }
 
 .articles .article-entry .article-more-link {
@@ -1692,9 +1694,10 @@ a.toc-link {
     float: right;
     background-color: #ff6057;
     padding: .5rem 1rem;
-    border-radius: 4px;
+    border-radius: 2px;
     color: #fff !important;
-    text-decoration: none
+    text-decoration: none;
+    font-size: 89%;
 }
 
 .articles .article-entry .article-gallery {
@@ -2766,7 +2769,8 @@ pre .id {
 }
 
 .logo img {
-    width: 4.2rem
+    width: 4.2rem;
+    border-radius: 10%;
 }
 
 .todark,
@@ -2852,3 +2856,8 @@ ol {
     padding-left: 2px;
     padding-top: 2px;
 }
+.notice i {
+    color: #ff4f4f !important;
+}
+/* --------------------------------- */
+
