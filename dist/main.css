@@ -1280,7 +1280,11 @@ button {
 }
 
 .article-nav-title {
-    font-size: inherit
+    font-size: inherit;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 36rem;
 }
 
 .article-share-box {
@@ -2771,6 +2775,7 @@ pre .id {
 .logo img {
     width: 4.2rem;
     border-radius: 10%;
+    height: 4.2rem;
 }
 
 .todark,
