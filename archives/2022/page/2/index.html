@@ -79,6 +79,48 @@
       <article class="archive-article archive-type-post">
   <div class="archive-article-inner">
     <header class="archive-article-header">
+      <a href="/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/" class="archive-article-date">
+  <time datetime="2022-11-22T06:50:40.000Z" itemprop="datePublished">11/22</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"
+    >Hexo及主题的相关配置</a> 
+</h2>
+ 
+
+    </header>
+    
+    
+  </div>
+</article>
+      
+  
+  
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/" class="archive-article-date">
+  <time datetime="2022-11-22T04:02:07.000Z" itemprop="datePublished">11/22</time>
+</a>
+       
+<h2 itemprop="name">
+  <a class="archive-article-title" href="/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/"
+    >vue 在系统上禁止运行脚本</a> 
+</h2>
+ 
+
+    </header>
+    
+    
+  </div>
+</article>
+      
+  
+  
+      <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
       <a href="/2022/11/22/Postman%E6%B1%89%E5%8C%96/" class="archive-article-date">
   <time datetime="2022-11-21T16:06:37.000Z" itemprop="datePublished">11/22</time>
 </a>
@@ -211,6 +253,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/envelope">信</a>
     </li>
     
   </ul>
@@ -403,7 +449,7 @@
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       $(".article pre code").before(copyHtml);
@@ -419,12 +465,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-checkbox-circle-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
+        $span[0].innerText = '已复制';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-checkbox-circle-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
       clipboard.on('error', function(e) {
@@ -435,12 +481,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-time-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
+        $span[0].innerText = '复制失败';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-time-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
     }

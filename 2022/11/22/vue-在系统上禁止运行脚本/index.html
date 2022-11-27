@@ -251,6 +251,10 @@
       <a class="nav-item-link" href="/about">关于我</a>
     </li>
     
+    <li class="nav-item">
+      <a class="nav-item-link" href="/envelope">信</a>
+    </li>
+    
   </ul>
 </nav>
 <nav class="navbar navbar-bottom">
@@ -457,7 +461,7 @@
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       $(".article pre code").before(copyHtml);
@@ -473,12 +477,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-checkbox-circle-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
+        $span[0].innerText = '已复制';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-checkbox-circle-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
       clipboard.on('error', function(e) {
@@ -489,12 +493,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-time-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
+        $span[0].innerText = '复制失败';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-time-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
     }

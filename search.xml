@@ -1,47 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Electron热加载</title>
-    <url>/2022/11/27/Electron%E7%83%AD%E5%8A%A0%E8%BD%BD/</url>
-    <content><![CDATA[<h4 id="安装Electron热加载插件"><a href="#安装Electron热加载插件" class="headerlink" title="安装Electron热加载插件"></a>安装Electron热加载插件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在项目的根目录下安装 electron-reloader，国内建议使用 cnpm 代替 npm</span><br><span class="line">npm install electron-reloader --save-dev</span><br></pre></td></tr></table></figure>
-
-<h4 id="导入热加载插件"><a href="#导入热加载插件" class="headerlink" title="导入热加载插件"></a>导入热加载插件</h4><p>打开项目下的 package.json 文件，找到里面配置的入口文件。<br>如图我这里配置的是 main.js 文件：</p>
-<p><img src="/images/source/electron%E7%83%AD%E5%8A%A0%E8%BD%BD.png" alt="electron热加载" title="electron热加载"></p>
-<p>打开入口文件，导入热加载插件：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在入口文件对的顶部配置热加载</span></span><br><span class="line"><span class="comment">// 热加载</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="built_in">require</span>(<span class="string">&#x27;electron-reloader&#x27;</span>)(<span class="variable language_">module</span>, &#123;&#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (_) &#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>然后保存并重新手动运行项目，热加载就能生效了。修改了代码后直接保存就能触发热加载自动更新运行项目，再也不需要反复手动运行项目了。</p>
-]]></content>
-      <categories>
-        <category>Electron</category>
-      </categories>
-      <tags>
-        <tag>Electron</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON的parse与stringify区别</title>
-    <url>/2022/11/27/JSON%E7%9A%84parse%E4%B8%8Estringify%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h4 id="一、JSON-parse-与JSON-stringify-的区别"><a href="#一、JSON-parse-与JSON-stringify-的区别" class="headerlink" title="一、JSON.parse()与JSON.stringify()的区别"></a>一、JSON.parse()与JSON.stringify()的区别</h4><blockquote>
-<p>JSON.parse()将JSON字符串转为一个对象，而JSON.stringify()是将 JavaScript 对象转换为 JSON 字符串.</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">&#x27;&#123; &quot;sites&quot; : [&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Runoob&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Taobao&quot; , &quot;url&quot;:&quot;www.taobao.com&quot; &#125; ]&#125;&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(text);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line">str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="comment">//obj = JSON.parse(text);</span></span><br><span class="line">&#123;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)&#125;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)<span class="number">0</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Runoob&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.runoob.com&#x27;</span>&#125;<span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Google&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.google.com&#x27;</span>&#125;<span class="number">2</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Taobao&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.taobao.com&#x27;</span>&#125;<span class="attr">length</span>: <span class="number">3</span>[[<span class="title class_">Prototype</span>]]: <span class="title class_">Array</span>(<span class="number">0</span>)[[<span class="title class_">Prototype</span>]]: <span class="title class_">Object</span></span><br><span class="line"><span class="comment">//str = JSON.stringify(obj)</span></span><br><span class="line">&#123;<span class="string">&quot;sites&quot;</span>:[&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Runoob&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.runoob.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.google.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Taobao&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.taobao.com&quot;</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>注：使用JSON.parse()时，字符串必须符合JSON格式，即键值都必须使用双引号包裹：</strong></em>❤</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;[&quot;1&quot;,&quot;2&quot;]&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;[&#x27;1&#x27;,&#x27;2&#x27;]&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(a));   <span class="comment">// Array [1,2]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(b));  <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="两者的用法"><a href="#两者的用法" class="headerlink" title="两者的用法"></a>两者的用法</h4><h6 id="让localStorage-x2F-sessionStorage可以存储对象"><a href="#让localStorage-x2F-sessionStorage可以存储对象" class="headerlink" title="让localStorage&#x2F;sessionStorage可以存储对象"></a>让localStorage&#x2F;sessionStorage可以存储对象</h6><p>在开发过程中，我们存储的数据大部分为对象类型，但是localStorage&#x2F;sessionStorage只能存储为字符串类型，所以，我们在使用的时候就可以配合JSON.parse()与JSON.stringify()来存取数据</p>
-<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>JSON.stringify()与toString()的区别</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr);    <span class="comment">// &#x27;[1,2,3]&#x27;</span></span><br><span class="line">arr.<span class="title function_">toString</span>();    <span class="comment">// 1,2,3</span></span><br></pre></td></tr></table></figure>
-<p>两者都是可以把数组转为字符串，但是，JSON.stringify() 面向的更多是对象，toString() 并不能对 { name : ‘lxy’ } 这类对象实现你想要的操作，面向的更多是数字。</p>
-]]></content>
-      <categories>
-        <category>JSON的parse与stringify</category>
-      </categories>
-      <tags>
-        <tag>JSON的parse与stringify</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Hexo及主题的相关配置</title>
     <url>/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>介绍如何安装Hexo及下载主题和配置主题，并且上传到Github成功访问</p>
@@ -162,43 +121,31 @@ hexo s
       </tags>
   </entry>
   <entry>
-    <title>博客内容格式配置与说明</title>
-    <url>/2022/11/27/README/</url>
-    <content><![CDATA[<blockquote>
-<p>编写博客标题说明</p>
-</blockquote>
-<h2 id="我的博客，这是一个说明文件"><a href="#我的博客，这是一个说明文件" class="headerlink" title="我的博客，这是一个说明文件"></a>我的博客，这是一个说明文件</h2><h1 id="标题一-1"><a href="#标题一-1" class="headerlink" title="标题一|1 #"></a>标题一|1 #</h1><h2 id="标题二-2"><a href="#标题二-2" class="headerlink" title="标题二|2 ##"></a>标题二|2 ##</h2><h3 id="标题三-3"><a href="#标题三-3" class="headerlink" title="标题三|3 ###"></a>标题三|3 ###</h3><h4 id="标题四-4"><a href="#标题四-4" class="headerlink" title="标题四|4 ####"></a>标题四|4 ####</h4><h5 id="标题五-5"><a href="#标题五-5" class="headerlink" title="标题五|5 #####"></a>标题五|5 #####</h5><h6 id="标题-6"><a href="#标题-6" class="headerlink" title="标题|6 ######"></a>标题|6 ######</h6><blockquote>
-<p>`&#96;&#96;开头`&#96;&#96;结尾是【代码块】，会出现copy字样</p>
-</blockquote>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>]]></content>
+    <title>VSCode中如何配置markdown代码片段</title>
+    <url>/2022/11/27/VSCode%E4%B8%AD%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEmarkdown%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
+    <content><![CDATA[<h6 id="Vscode右下角设置⚙-gt-gt-gt-配置用户代码片段"><a href="#Vscode右下角设置⚙-gt-gt-gt-配置用户代码片段" class="headerlink" title="Vscode右下角设置⚙&gt;&gt;&gt;配置用户代码片段"></a>Vscode右下角设置⚙&gt;&gt;&gt;配置用户代码片段</h6><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;Print to ```js&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">	<span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;```js&quot;</span><span class="punctuation">,</span><span class="comment">//快捷键</span></span><br><span class="line">	<span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;``` js&quot;</span><span class="punctuation">,</span><span class="comment">//要输入的代码</span></span><br><span class="line">		<span class="string">&quot;$1&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;```&quot;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;创建代码段js&quot;</span> <span class="comment">//描述</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<h6 id="接下来在设置setting-json中添加编辑器快捷editor-quickSuggestions设置"><a href="#接下来在设置setting-json中添加编辑器快捷editor-quickSuggestions设置" class="headerlink" title="接下来在设置setting.json中添加编辑器快捷editor.quickSuggestions设置"></a>接下来在设置setting.json中添加编辑器快捷<em>editor.quickSuggestions</em>设置</h6><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;[markdown]&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;editor.quickSuggestions&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+<p>保存后就可以用快捷键了</p>
+]]></content>
+      <categories>
+        <category>Vscode设置快捷键</category>
+      </categories>
       <tags>
-        <tag>博客</tag>
-        <tag>Readme</tag>
+        <tag>vscode快捷键</tag>
+        <tag>vscode</tag>
+        <tag>vscode插件</tag>
       </tags>
   </entry>
   <entry>
-    <title>Postman汉化</title>
-    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
-    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
-<span id="more"></span>
-<ol>
-<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
-<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
-</ol>
+    <title>ayer主题文件说明</title>
+    <url>/2022/11/27/ayer%E4%B8%BB%E9%A2%98%E6%96%87%E4%BB%B6%E8%AF%B4%E6%98%8E/</url>
+    <content><![CDATA[<h5 id="文件名称：clipboard-ejs"><a href="#文件名称：clipboard-ejs" class="headerlink" title="文件名称：clipboard.ejs"></a>文件名称：clipboard.ejs</h5><h5 id="文件路径：’E-Hexo-littleHexo-themes-ayer-layout-partial-post’"><a href="#文件路径：’E-Hexo-littleHexo-themes-ayer-layout-partial-post’" class="headerlink" title="文件路径：’E:\Hexo\littleHexo\themes\ayer\layout\_partial\post’"></a>文件路径：’E:\Hexo\littleHexo\themes\ayer\layout\_partial\post’</h5><h5 id="文件用途：管理代码块的复制粘贴"><a href="#文件用途：管理代码块的复制粘贴" class="headerlink" title="文件用途：管理代码块的复制粘贴"></a>文件用途：管理代码块的复制粘贴</h5><hr>
 ]]></content>
-      <categories>
-        <category>软件&amp;硬件问题汇总</category>
-      </categories>
-      <tags>
-        <tag>Postman</tag>
-        <tag>汉化</tag>
-        <tag>软件</tag>
-      </tags>
   </entry>
   <entry>
     <title>Javascript常用函数、方法速查手册</title>
     <url>/2022/11/27/Javascript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81%E6%96%B9%E6%B3%95%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/</url>
-    <content><![CDATA[<h4 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h4><p>这部分主要对原生JS数组方法进行归纳</p>
+    <content><![CDATA[<h4 id="一、Array对象"><a href="#一、Array对象" class="headerlink" title="一、Array对象"></a>一、Array对象</h4><p>这部分主要对原生JS数组方法进行归纳</p>
 <ol>
 <li>indexOf()<br>搜索数组中的元素，并返回它所在的位置。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line"><span class="keyword">var</span> a = fruits.<span class="title function_">indexOf</span>(<span class="string">&quot;Apple&quot;</span>);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></li>
 <li>includes()<br>判断一个数组是否包含一个指定的值。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> site = [<span class="string">&#x27;runoob&#x27;</span>, <span class="string">&#x27;google&#x27;</span>, <span class="string">&#x27;taobao&#x27;</span>];</span><br><span class="line">site.<span class="title function_">includes</span>(<span class="string">&#x27;runoob&#x27;</span>); </span><br><span class="line"><span class="comment">// true </span></span><br><span class="line">site.<span class="title function_">includes</span>(<span class="string">&#x27;baidu&#x27;</span>); </span><br><span class="line"><span class="comment">// false</span></span><br><span class="line">arr.<span class="title function_">includes</span>(searchElement, fromIndex)</span><br><span class="line"><span class="comment">//searchElement 必须。需要查找的元素值。</span></span><br><span class="line"><span class="comment">//fromIndex 可选。从该索引处开始查找 searchElement。如果为负值，则按升序从 array.length + fromIndex 的索引开始搜索。默认为 0。</span></span><br><span class="line"><span class="comment">//如果 fromIndex 为负值，计算出的索引将作为开始搜索searchElement的位置。如果计算出的索引小于 0，则整个数组都会被搜索。</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="string">&#x27;a&#x27;</span>, <span class="string">&#x27;b&#x27;</span>, <span class="string">&#x27;c&#x27;</span>];</span><br><span class="line">arr.<span class="title function_">includes</span>(<span class="string">&#x27;a&#x27;</span>, -<span class="number">100</span>); <span class="comment">// true</span></span><br><span class="line">arr.<span class="title function_">includes</span>(<span class="string">&#x27;b&#x27;</span>, -<span class="number">100</span>); <span class="comment">// true</span></span><br><span class="line">arr.<span class="title function_">includes</span>(<span class="string">&#x27;c&#x27;</span>, -<span class="number">100</span>); <span class="comment">// true</span></span><br></pre></td></tr></table></figure></li>
@@ -208,6 +155,80 @@ hexo s
 <li>find()<br>返回符合传入测试（函数）条件的数组元素。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//find() 方法返回通过测试（函数内判断）的数组的第一个元素的值。</span></span><br><span class="line"><span class="comment">//find() 方法为数组中的每个元素都调用一次函数执行：</span></span><br><span class="line"><span class="comment">//当数组中的元素在测试条件时返回 true 时, find() 返回符合条件的元素，之后的值不会再调用执行函数。</span></span><br><span class="line"><span class="comment">//如果没有符合条件的元素返回 undefined</span></span><br><span class="line"><span class="comment">//注意: find() 对于空数组，函数是不会执行的。</span></span><br><span class="line"><span class="comment">//注意: find() 并没有改变数组的原始值。</span></span><br><span class="line"><span class="keyword">var</span> ages = [<span class="number">3</span>, <span class="number">10</span>, <span class="number">18</span>, <span class="number">20</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkAdult</span>(<span class="params">age</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span> = ages.<span class="title function_">find</span>(checkAdult);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">18</span></span><br></pre></td></tr></table></figure></li>
 <li>filter()<br>检测数值元素，并返回符合条件所有元素的数组。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//filter() 方法创建一个新的数组，新数组中的元素是通过检查指定数组中符合条件的所有元素。</span></span><br><span class="line"><span class="comment">//注意： filter() 不会对空数组进行检测。</span></span><br><span class="line"><span class="comment">//注意： filter() 不会改变原始数组。</span></span><br><span class="line"><span class="keyword">var</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkAdult</span>(<span class="params">age</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span> = ages.<span class="title function_">filter</span>(checkAdult);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果为:</span></span><br><span class="line"><span class="number">32</span>,<span class="number">33</span>,<span class="number">40</span></span><br></pre></td></tr></table></figure></li>
 <li>every()<br>检测数值元素的每个元素是否都符合条件。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//every() 方法用于检测数组所有元素是否都符合指定条件（通过函数提供）。</span></span><br><span class="line"><span class="comment">//every() 方法使用指定函数检测数组中的所有元素：</span></span><br><span class="line"><span class="comment">//如果数组中检测到有一个元素不满足，则整个表达式返回 false ，且剩余的元素不会再进行检测。</span></span><br><span class="line"><span class="comment">//如果所有元素都满足条件，则返回 true。</span></span><br><span class="line"><span class="comment">//注意： every() 不会对空数组进行检测。</span></span><br><span class="line"><span class="comment">//注意： every() 不会改变原始数组。</span></span><br><span class="line"><span class="keyword">var</span> ages = [<span class="number">32</span>, <span class="number">33</span>, <span class="number">16</span>, <span class="number">40</span>];</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">checkAdult</span>(<span class="params">age</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span> age &gt;= <span class="number">18</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="title function_">myFunction</span>(<span class="params"></span>) &#123;</span><br><span class="line">    <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;demo&quot;</span>).<span class="property">innerHTML</span> = ages.<span class="title function_">every</span>(checkAdult);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//输出结果为:</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
+<li>unshift()<br>向数组的开头添加一个或更多元素，并返回新的长度。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//unshift() 方法可向数组的开头添加一个或更多元素，并返回新的长度。</span></span><br><span class="line"><span class="comment">//注意： 该方法将改变数组的数目。</span></span><br><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line">fruits.<span class="title function_">unshift</span>(<span class="string">&quot;Lemon&quot;</span>,<span class="string">&quot;Pineapple&quot;</span>);</span><br><span class="line"><span class="comment">//输出：</span></span><br><span class="line"><span class="title class_">Lemon</span>,<span class="title class_">Pineapple</span>,<span class="title class_">Banana</span>,<span class="title class_">Orange</span>,<span class="title class_">Apple</span>,<span class="title class_">Mango</span></span><br></pre></td></tr></table></figure></li>
+<li>slice()<br>选取数组的一部分，并返回一个新数组。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//slice() 方法可从已有的数组中返回选定的元素。</span></span><br><span class="line"><span class="comment">//slice()方法可提取字符串的某个部分，并以新的字符串返回被提取的部分。</span></span><br><span class="line"><span class="comment">//注意： slice() 方法不会改变原始数组。</span></span><br><span class="line"><span class="keyword">var</span> fruits = [<span class="string">&quot;Banana&quot;</span>, <span class="string">&quot;Orange&quot;</span>, <span class="string">&quot;Lemon&quot;</span>, <span class="string">&quot;Apple&quot;</span>, <span class="string">&quot;Mango&quot;</span>];</span><br><span class="line"><span class="keyword">var</span> citrus = fruits.<span class="title function_">slice</span>(<span class="number">1</span>,<span class="number">3</span>);</span><br><span class="line"><span class="comment">//输出:</span></span><br><span class="line"><span class="title class_">Orange</span>,<span class="title class_">Lemon</span></span><br></pre></td></tr></table></figure></li>
+<li>forEach()<br>数组每个元素都执行一次回调函数。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//forEach() 方法用于调用数组的每个元素，并将元素传递给回调函数。</span></span><br><span class="line"><span class="comment">//注意: forEach() 不会改变原数组</span></span><br><span class="line"><span class="comment">//注意: forEach() 对于空数组是不会执行回调函数的。</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];</span><br><span class="line">arr.<span class="title function_">forEach</span>(<span class="keyword">function</span> (<span class="params">item</span>) &#123;</span><br><span class="line">    <span class="keyword">if</span> (item === <span class="number">3</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(item);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></li>
+<li>isArray()<br>判断对象是否为数组,isArray() 方法用于判断一个对象是否为数组。<br>如果对象是数组返回 true，否则返回 false。</li>
+</ol>
+<h4 id="二、String对象"><a href="#二、String对象" class="headerlink" title="二、String对象"></a>二、String对象</h4><p>这部分主要对原生JS字符串方法进行归纳</p>
+<ol>
+<li>includes()<br>查找字符串中是否包含指定的子字符串。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//includes() 方法用于判断字符串是否包含指定的子字符串。</span></span><br><span class="line"><span class="comment">//如果找到匹配的字符串则返回 true，否则返回 false。</span></span><br><span class="line"><span class="comment">//注意： includes() 方法区分大小写。</span></span><br><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;Hello world, welcome to the Runoob。&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n = str.<span class="title function_">includes</span>(<span class="string">&quot;world&quot;</span>);</span><br><span class="line"><span class="comment">//输出结果</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li>concat()<br>连接两个或更多字符串，并返回新的字符串。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str1 = <span class="string">&quot;Hello &quot;</span>;</span><br><span class="line"><span class="keyword">var</span> str2 = <span class="string">&quot;world!&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n = str1.<span class="title function_">concat</span>(str2);</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="title class_">Hello</span> world!</span><br></pre></td></tr></table></figure></li>
+<li>indexOf()<br>返回某个指定的字符串值在字符串中首次出现的位置。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;Hello world, welcome to the universe.&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n=str.<span class="title function_">indexOf</span>(<span class="string">&quot;welcome&quot;</span>);</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="number">13</span></span><br></pre></td></tr></table></figure></li>
+<li>replace()<br>在字符串中查找匹配的子串， 并替换与正则表达式匹配的子串。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//replace() 方法用于在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。</span></span><br><span class="line"><span class="comment">//如果想了解更多正则表达式教程请查看本站的：RegExp 教程 和 our RegExp 对象参考手册.</span></span><br><span class="line"><span class="comment">//该方法不会改变原始字符串。</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;Visit Microsoft! Visit Microsoft!&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n=str.<span class="title function_">replace</span>(<span class="string">&quot;Microsoft&quot;</span>,<span class="string">&quot;Runoob&quot;</span>);</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line"><span class="title class_">Visit</span> <span class="title class_">Runoob</span>!<span class="title class_">Visit</span> <span class="title class_">Microsoft</span>!</span><br></pre></td></tr></table></figure></li>
+<li>slice()<br>提取字符串的片断，并在新的字符串中返回被提取的部分。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>split()<br>把字符串分割为字符串数组。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//split() 方法用于把一个字符串分割成字符串数组。</span></span><br><span class="line"><span class="comment">//提示： 如果把空字符串 (&quot;&quot;) 用作 separator，那么 stringObject 中的每个字符之间都会被分割。</span></span><br><span class="line"><span class="comment">//注意： split() 方法不改变原始字符串。</span></span><br><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;How are you doing today?&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n=str.<span class="title function_">split</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line"><span class="comment">//输出一个数组的值:</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">How</span>,are,you,doing,today?</span><br></pre></td></tr></table></figure>
+7.substr()<br>从起始索引号提取字符串中指定数目的字符。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n=str.<span class="title function_">substr</span>(<span class="number">2</span>,<span class="number">3</span>)</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line">llo</span><br></pre></td></tr></table></figure></li>
+<li>substring()<br>提取字符串中两个指定的索引号之间的字符。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//substring() 方法用于提取字符串中介于两个指定下标之间的字符。</span></span><br><span class="line"><span class="comment">//substring() 方法返回的子串包括 开始 处的字符，但不包括 结束 处的字符。</span></span><br></pre></td></tr></table></figure></li>
+<li>trim()<br>去除字符串两边的空白<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;       Runoob        &quot;</span>;</span><br><span class="line"><span class="title function_">alert</span>(str.<span class="title function_">trim</span>());</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="title class_">Runoob</span></span><br></pre></td></tr></table></figure></li>
+<li>toString()<br>返回一个字符串。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">&quot;Runoob&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> res = str.<span class="title function_">toString</span>();</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="title class_">Runoob</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="三、Number-对象"><a href="#三、Number-对象" class="headerlink" title="三、Number 对象"></a>三、Number 对象</h4><p>这部分主要对原生Number对象常用的一些方法进行整理</p>
+<ol>
+<li>toString()<br>把数字转换为字符串，使用指定的基数。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> num = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">var</span> n = num.<span class="title function_">toString</span>();</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line"></span><br><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure></li>
+<li>valueOf()<br>返回一个 Number 对象的基本数字值。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回一个 Number 对象的基本数字值：</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">15</span>;</span><br><span class="line"><span class="keyword">var</span> n = num.<span class="title function_">valueOf</span>();</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"></span><br><span class="line"><span class="number">15</span></span><br></pre></td></tr></table></figure></li>
+<li>toFixed()<br>把数字转换为字符串，结果的小数点后有指定位数的数字。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//把数字转换为字符串，结果的小数点后有指定位数的数字：</span></span><br><span class="line"><span class="keyword">var</span> num = <span class="number">5.56789</span>;</span><br><span class="line"><span class="keyword">var</span> n=num.<span class="title function_">toFixed</span>(<span class="number">2</span>);</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"></span><br><span class="line"><span class="number">5.57</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="四、Math对象"><a href="#四、Math对象" class="headerlink" title="四、Math对象"></a>四、Math对象</h4><p>这部分主要对原生JS Math对象常用的方法进行整理</p>
+<ol>
+<li>random()<br>返回 0 ~ 1 之间的随机数。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回介于 0（包含） ~ 1（不包含） 之间的一个随机数：</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">random</span>();</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">0.13704677732303505</span></span><br></pre></td></tr></table></figure></li>
+<li>round(x)<br>四舍五入。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//round() 方法可把一个数字舍入为最接近的整数：</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">round</span>(<span class="number">2.5</span>);</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">3</span></span><br></pre></td></tr></table></figure></li>
+<li>floor(x)<br>对 x 进行下舍入。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回小于等于x的最大整数:</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">floor</span>(<span class="number">1.6</span>);</span><br><span class="line"><span class="comment">//以上实例将输出：</span></span><br><span class="line"><span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+<li>ceil(x)<br>对数进行上舍入。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//对一个数进行上舍入:</span></span><br><span class="line"><span class="title class_">Math</span>.<span class="title function_">ceil</span>(<span class="number">1.4</span>)</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="五、Date-对象"><a href="#五、Date-对象" class="headerlink" title="五、Date 对象"></a>五、Date 对象</h4><p>这部分主要对原生Date对象的方法进行整理</p>
+<ol>
+<li>getDate()<br>从 Date 对象返回一个月中的某一天 (1 ~ 31)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getDate</span>();</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">6</span></span><br></pre></td></tr></table></figure></li>
+<li>getDay()<br>从 Date 对象返回一周中的某一天 (0 ~ 6)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//返回周几的名称</span></span><br><span class="line"><span class="keyword">var</span> d=<span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> weekday=<span class="keyword">new</span> <span class="title class_">Array</span>(<span class="number">7</span>);</span><br><span class="line">weekday[<span class="number">0</span>]=<span class="string">&quot;Sunday&quot;</span>;</span><br><span class="line">weekday[<span class="number">1</span>]=<span class="string">&quot;Monday&quot;</span>;</span><br><span class="line">weekday[<span class="number">2</span>]=<span class="string">&quot;Tuesday&quot;</span>;</span><br><span class="line">weekday[<span class="number">3</span>]=<span class="string">&quot;Wednesday&quot;</span>;</span><br><span class="line">weekday[<span class="number">4</span>]=<span class="string">&quot;Thursday&quot;</span>;</span><br><span class="line">weekday[<span class="number">5</span>]=<span class="string">&quot;Friday&quot;</span>;</span><br><span class="line">weekday[<span class="number">6</span>]=<span class="string">&quot;Saturday&quot;</span>;</span><br><span class="line"><span class="keyword">var</span> n = weekday[d.<span class="title function_">getDay</span>()];</span><br><span class="line"><span class="comment">//输出:</span></span><br><span class="line"><span class="title class_">Tuesday</span></span><br></pre></td></tr></table></figure></li>
+<li>getFullYear()<br>从 Date 对象以四位数字返回年份。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getFullYear</span>();</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">2021</span></span><br></pre></td></tr></table></figure></li>
+<li>getHours()<br>返回 Date 对象的小时 (0 ~ 23)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getHours</span>();</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line"><span class="number">11</span></span><br></pre></td></tr></table></figure></li>
+<li>getMinutes()<br>返回 Date 对象的分钟 (0 ~ 59)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getMinutes</span>();</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">27</span></span><br></pre></td></tr></table></figure></li>
+<li>getMonth()<br>从 Date 对象返回月份 (0 ~ 11)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getMonth</span>()+<span class="number">1</span>;</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure></li>
+<li>getSeconds()<br>返回 Date 对象的秒数 (0 ~ 59)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line"><span class="keyword">var</span> n = d.<span class="title function_">getSeconds</span>();</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="number">39</span></span><br></pre></td></tr></table></figure></li>
+<li>setDate()<br>设置 Date 对象中月的某一天 (1 ~ 31)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">setDate</span>(<span class="number">15</span>);</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"><span class="title class_">Thu</span> <span class="title class_">Apr</span> <span class="number">15</span> <span class="number">2021</span> <span class="number">11</span>:<span class="number">27</span>:<span class="number">56</span> <span class="variable constant_">GMT</span>+<span class="number">0800</span> (中国标准时间)</span><br></pre></td></tr></table></figure></li>
+<li>setFullYear()<br>设置 Date 对象中的年份（四位数字）。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">setFullYear</span>(<span class="number">2020</span>);</span><br><span class="line"><span class="comment">//输出结果:</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Mon</span> <span class="title class_">Apr</span> <span class="number">06</span> <span class="number">2020</span> <span class="number">11</span>:<span class="number">28</span>:<span class="number">14</span> <span class="variable constant_">GMT</span>+<span class="number">0800</span> (中国标准时间</span><br></pre></td></tr></table></figure></li>
+<li>setHours()<br>设置 Date 对象中的小时 (0 ~ 23)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">setHours</span>(<span class="number">15</span>);</span><br><span class="line"><span class="comment">// 输出结果:</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Tue</span> <span class="title class_">Apr</span> <span class="number">06</span> <span class="number">2021</span> <span class="number">15</span>:<span class="number">28</span>:<span class="number">28</span> <span class="variable constant_">GMT</span>+<span class="number">0800</span> (中国标准时间)</span><br></pre></td></tr></table></figure></li>
+<li>setMinutes()<br>设置 Date 对象中的分钟 (0 ~ 59)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">setMinutes</span>(<span class="number">17</span>);</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"></span><br><span class="line"><span class="title class_">Tue</span> <span class="title class_">Apr</span> <span class="number">06</span> <span class="number">2021</span> <span class="number">11</span>:<span class="number">17</span>:<span class="number">21</span> <span class="variable constant_">GMT</span>+<span class="number">0800</span> (中国标准时间)</span><br></pre></td></tr></table></figure></li>
+<li>setMonth()<br>设置 Date 对象中月份 (0 ~ 11)。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> d = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">d.<span class="title function_">setMonth</span>(<span class="number">4</span>);</span><br><span class="line"><span class="comment">//输出结果：</span></span><br><span class="line"><span class="title class_">Thu</span> <span class="title class_">May</span> <span class="number">06</span> <span class="number">2021</span> <span class="number">11</span>:<span class="number">28</span>:<span class="number">44</span> <span class="variable constant_">GMT</span>+<span class="number">0800</span> (中国标准时间)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="六、RegExp对象"><a href="#六、RegExp对象" class="headerlink" title="六、RegExp对象"></a>六、RegExp对象</h4><p>这部分主要对常用原生RegExp字符串方法进行整理</p>
+<ol>
+<li>exec()<br>检索字符串中指定的值。返回找到的值，并确定其位置。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="comment">//查找&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">var</span> patt=<span class="regexp">/Hello/g</span>;</span><br><span class="line"><span class="keyword">var</span> result=patt.<span class="title function_">exec</span>(str);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="title class_">Hello</span></span><br></pre></td></tr></table></figure></li>
+<li>test()<br>检索字符串中指定的值。返回 true 或 false。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> str=<span class="string">&quot;Hello world!&quot;</span>;</span><br><span class="line"><span class="comment">//查找&quot;Hello&quot;</span></span><br><span class="line"><span class="keyword">var</span> patt=<span class="regexp">/Hello/g</span>;</span><br><span class="line"><span class="keyword">var</span> result=patt.<span class="title function_">test</span>(str);</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure></li>
+<li>toString()<br>返回正则表达式的字符串。<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> patt = <span class="keyword">new</span> <span class="title class_">RegExp</span>(<span class="string">&quot;RUNOOB&quot;</span>, <span class="string">&quot;g&quot;</span>);</span><br><span class="line"><span class="keyword">var</span> res = patt.<span class="title function_">toString</span>();</span><br><span class="line"><span class="comment">//输出</span></span><br><span class="line"><span class="regexp">/RUNOOB/g</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<h4 id="七、全局属性"><a href="#七、全局属性" class="headerlink" title="七、全局属性"></a>七、全局属性</h4><p>这部分主要对常用的全局属性进行整理</p>
+<ol>
+<li>Infinity()<br>代表正的无穷大的数值。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//Infinity 属性用于存放表示正无穷大的数值。</span><br><span class="line">//负无穷大是表示负无穷大一个数字值。</span><br><span class="line">//在Javascript中，超出 1.7976931348623157E+103088 的数值即为Infinity，小于 -1.7976931348623157E+103088 的数值为无穷小。</span><br></pre></td></tr></table></figure></li>
+<li>NaN()<br>指示某个值是不是数字值。<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//NaN 即非数值（Not a Number），NaN 属性用于引用特殊的非数字值，该属性指定的并不是不合法的数字。</span><br><span class="line">//NaN 属性 与 Number.Nan 属性相同。</span><br><span class="line">//使用 isNaN() 来判断一个值是否是数字。原因是 NaN 与所有值都不相等，包括它自己。</span><br></pre></td></tr></table></figure></li>
+<li>undefined()<br>指示未定义的值。</li>
+</ol>
+<h4 id="八、全局方法"><a href="#八、全局方法" class="headerlink" title="八、全局方法"></a>八、全局方法</h4><p>这部分主要对常用的全局方法进行整理</p>
+<ol>
+<li><p>decodeURI()<br>解码某个编码的 URI。</p>
+</li>
+<li><p>encodeURI()<br>把字符串编码为 URI。</p>
+</li>
+<li><p>escape()<br>对字符串进行编码。</p>
+</li>
+<li><p>parseFloat()<br>parseFloat() 函数可解析一个字符串，并返回一个浮点数。<br>该函数指定字符串中的首个字符是否是数字。如果是，则对字符串进行解析，直到到达数字的末端为止，然后以数字返回该数字，而不是作为字符串。</p>
+</li>
+<li><p>parseInt()<br>parseInt() 函数可解析一个字符串，并返回一个整数</p>
+</li>
+<li><p>String()<br>把对象的值转换为字符串。</p>
+</li>
+<li><p>unescape()<br>对由 escape() 编码的字符串进行解码。</p>
+</li>
 </ol>
 ]]></content>
       <tags>
@@ -216,22 +237,62 @@ hexo s
       </tags>
   </entry>
   <entry>
-    <title>JS时间戳和时间之间转换</title>
-    <url>/2022/11/27/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>一、时间转换时间戳</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">//时间对象</span></span><br><span class="line"><span class="keyword">var</span> str = date.<span class="title function_">getTime</span>(); <span class="comment">//转换成时间戳</span></span><br></pre></td></tr></table></figure>
-<p>二、时间戳转换为时间</p>
-<ol>
-<li>转换成形如 2018年1月4日 14:00:00 格式：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getDate</span>(<span class="params">date</span>)&#123; </span><br><span class="line">    <span class="keyword">var</span> t = <span class="keyword">new</span> <span class="title class_">Date</span>(date).<span class="title function_">toLocaleString</span>(); </span><br><span class="line">    <span class="keyword">return</span> t; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>也可以这样<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 也很简单</span></span><br><span class="line"><span class="keyword">var</span> strtime = <span class="string">&#x27;2014-04-23 18:55:49:123&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(strtime.<span class="title function_">replace</span>(<span class="regexp">/-/g</span>, <span class="string">&#x27;/&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 有三种方式获取，在后面会讲到三种方式的区别</span></span><br><span class="line">time1 = date.<span class="title function_">getTime</span>();</span><br><span class="line">time2 = date.<span class="title function_">valueOf</span>();</span><br><span class="line">time3 = <span class="title class_">Date</span>.<span class="title function_">parse</span>(date);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">三种获取的区别：</span></span><br><span class="line"><span class="comment">第一、第二种：会精确到毫秒</span></span><br><span class="line"><span class="comment">第三种：只能精确到秒，毫秒将用0来代替</span></span><br><span class="line"><span class="comment">比如上面代码输出的结果(一眼就能看出区别)：</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549000 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
-<li>转换成更多其他的格式：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单的一句代码</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(时间戳); <span class="comment">//获取一个时间对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 1. 下面是获取时间日期的方法，需要什么样的格式自己拼接起来就好了</span></span><br><span class="line"><span class="comment"> 2. 更多好用的方法可以在这查到 -&gt; http://www.w3school.com.cn/jsref/jsref_obj_date.asp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">date.<span class="title function_">getFullYear</span>();  <span class="comment">// 获取完整的年份(4位,1970)</span></span><br><span class="line">date.<span class="title function_">getMonth</span>();  <span class="comment">// 获取月份(0-11,0代表1月,用的时候记得加上1)</span></span><br><span class="line">date.<span class="title function_">getDate</span>();  <span class="comment">// 获取日(1-31)</span></span><br><span class="line">date.<span class="title function_">getTime</span>();  <span class="comment">// 获取时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">date.<span class="title function_">getHours</span>();  <span class="comment">// 获取小时数(0-23)</span></span><br><span class="line">date.<span class="title function_">getMinutes</span>();  <span class="comment">// 获取分钟数(0-59)</span></span><br><span class="line">date.<span class="title function_">getSeconds</span>();  <span class="comment">// 获取秒数(0-59)</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="comment">// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">1398250549490</span>);</span><br><span class="line">Y = date.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">M = (date.<span class="title function_">getMonth</span>()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+(date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) : date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">D = date.<span class="title function_">getDate</span>() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">h = date.<span class="title function_">getHours</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">m = date.<span class="title function_">getMinutes</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">s = date.<span class="title function_">getSeconds</span>(); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(Y+M+D+h+m+s); </span><br><span class="line"><span class="comment">// 输出结果：2014-04-23 18:55:49</span></span><br></pre></td></tr></table></figure>
-
+    <title>vue项目启动报错：Syntax Error: Error: Node Sass version 7.0.3 is incompatible with ^4.0.0.</title>
+    <url>/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/</url>
+    <content><![CDATA[<p>第一步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall node-sass</span><br></pre></td></tr></table></figure>
+<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99.png" alt="vue启动报错" title="vue启动报错"></p>
+<p>第二步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i -D sass</span><br></pre></td></tr></table></figure>
+<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E4%BA%8C.png" alt="vue启动成功" title="vue启动成功"></p>
 ]]></content>
       <categories>
-        <category>JS时间戳和时间之间转换</category>
+        <category>vue项目启动报错</category>
       </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue启动报错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装依赖时报错：npm ERR! code ERESOLVE npm ERR! ERESOLVE could not resolve npm ERR! npm ERR! While resolving</title>
+    <url>/2022/11/27/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Anpm-ERR-code-ERESOLVE-npm-ERR-ERESOLVE-could-not-resolve-npm-ERR-npm-ERR-While-resolving/</url>
+    <content><![CDATA[<p><strong>错误原因</strong>：可能是npm版本问题报错</p>
+<p><strong>解决方法</strong>：在完整的指令后面添加–legacy-peer-deps</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--legacy-peer-deps**</span><br></pre></td></tr></table></figure>
+
+<p>即以下这种</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i axios -S --legacy-peer-deps</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>安装依赖时报错</category>
+      </categories>
+      <tags>
+        <tag>安装依赖时报错</tag>
+        <tag>npm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON的parse与stringify区别</title>
+    <url>/2022/11/27/JSON%E7%9A%84parse%E4%B8%8Estringify%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h4 id="一、JSON-parse-与JSON-stringify-的区别"><a href="#一、JSON-parse-与JSON-stringify-的区别" class="headerlink" title="一、JSON.parse()与JSON.stringify()的区别"></a>一、JSON.parse()与JSON.stringify()的区别</h4><blockquote>
+<p>JSON.parse()将JSON字符串转为一个对象，而JSON.stringify()是将 JavaScript 对象转换为 JSON 字符串.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">&#x27;&#123; &quot;sites&quot; : [&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Runoob&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Taobao&quot; , &quot;url&quot;:&quot;www.taobao.com&quot; &#125; ]&#125;&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(text);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line">str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="comment">//obj = JSON.parse(text);</span></span><br><span class="line">&#123;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)&#125;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)<span class="number">0</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Runoob&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.runoob.com&#x27;</span>&#125;<span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Google&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.google.com&#x27;</span>&#125;<span class="number">2</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Taobao&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.taobao.com&#x27;</span>&#125;<span class="attr">length</span>: <span class="number">3</span>[[<span class="title class_">Prototype</span>]]: <span class="title class_">Array</span>(<span class="number">0</span>)[[<span class="title class_">Prototype</span>]]: <span class="title class_">Object</span></span><br><span class="line"><span class="comment">//str = JSON.stringify(obj)</span></span><br><span class="line">&#123;<span class="string">&quot;sites&quot;</span>:[&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Runoob&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.runoob.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.google.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Taobao&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.taobao.com&quot;</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>注：使用JSON.parse()时，字符串必须符合JSON格式，即键值都必须使用双引号包裹：</strong></em>❤</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;[&quot;1&quot;,&quot;2&quot;]&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;[&#x27;1&#x27;,&#x27;2&#x27;]&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(a));   <span class="comment">// Array [1,2]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(b));  <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="两者的用法"><a href="#两者的用法" class="headerlink" title="两者的用法"></a>两者的用法</h4><h6 id="让localStorage-x2F-sessionStorage可以存储对象"><a href="#让localStorage-x2F-sessionStorage可以存储对象" class="headerlink" title="让localStorage&#x2F;sessionStorage可以存储对象"></a>让localStorage&#x2F;sessionStorage可以存储对象</h6><p>在开发过程中，我们存储的数据大部分为对象类型，但是localStorage&#x2F;sessionStorage只能存储为字符串类型，所以，我们在使用的时候就可以配合JSON.parse()与JSON.stringify()来存取数据</p>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>JSON.stringify()与toString()的区别</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr);    <span class="comment">// &#x27;[1,2,3]&#x27;</span></span><br><span class="line">arr.<span class="title function_">toString</span>();    <span class="comment">// 1,2,3</span></span><br></pre></td></tr></table></figure>
+<p>两者都是可以把数组转为字符串，但是，JSON.stringify() 面向的更多是对象，toString() 并不能对 { name : ‘lxy’ } 这类对象实现你想要的操作，面向的更多是数字。</p>
+]]></content>
+      <categories>
+        <category>JSON的parse与stringify</category>
+      </categories>
+      <tags>
+        <tag>JSON的parse与stringify</tag>
+      </tags>
   </entry>
   <entry>
     <title>Vue路由传参三种方式</title>
@@ -270,6 +331,57 @@ hexo s
       </tags>
   </entry>
   <entry>
+    <title>JS时间戳和时间之间转换</title>
+    <url>/2022/11/27/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>一、时间转换时间戳</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">//时间对象</span></span><br><span class="line"><span class="keyword">var</span> str = date.<span class="title function_">getTime</span>(); <span class="comment">//转换成时间戳</span></span><br></pre></td></tr></table></figure>
+<p>二、时间戳转换为时间</p>
+<ol>
+<li>转换成形如 2018年1月4日 14:00:00 格式：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getDate</span>(<span class="params">date</span>)&#123; </span><br><span class="line">    <span class="keyword">var</span> t = <span class="keyword">new</span> <span class="title class_">Date</span>(date).<span class="title function_">toLocaleString</span>(); </span><br><span class="line">    <span class="keyword">return</span> t; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>也可以这样<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 也很简单</span></span><br><span class="line"><span class="keyword">var</span> strtime = <span class="string">&#x27;2014-04-23 18:55:49:123&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(strtime.<span class="title function_">replace</span>(<span class="regexp">/-/g</span>, <span class="string">&#x27;/&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 有三种方式获取，在后面会讲到三种方式的区别</span></span><br><span class="line">time1 = date.<span class="title function_">getTime</span>();</span><br><span class="line">time2 = date.<span class="title function_">valueOf</span>();</span><br><span class="line">time3 = <span class="title class_">Date</span>.<span class="title function_">parse</span>(date);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">三种获取的区别：</span></span><br><span class="line"><span class="comment">第一、第二种：会精确到毫秒</span></span><br><span class="line"><span class="comment">第三种：只能精确到秒，毫秒将用0来代替</span></span><br><span class="line"><span class="comment">比如上面代码输出的结果(一眼就能看出区别)：</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549000 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li>转换成更多其他的格式：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单的一句代码</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(时间戳); <span class="comment">//获取一个时间对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 1. 下面是获取时间日期的方法，需要什么样的格式自己拼接起来就好了</span></span><br><span class="line"><span class="comment"> 2. 更多好用的方法可以在这查到 -&gt; http://www.w3school.com.cn/jsref/jsref_obj_date.asp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">date.<span class="title function_">getFullYear</span>();  <span class="comment">// 获取完整的年份(4位,1970)</span></span><br><span class="line">date.<span class="title function_">getMonth</span>();  <span class="comment">// 获取月份(0-11,0代表1月,用的时候记得加上1)</span></span><br><span class="line">date.<span class="title function_">getDate</span>();  <span class="comment">// 获取日(1-31)</span></span><br><span class="line">date.<span class="title function_">getTime</span>();  <span class="comment">// 获取时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">date.<span class="title function_">getHours</span>();  <span class="comment">// 获取小时数(0-23)</span></span><br><span class="line">date.<span class="title function_">getMinutes</span>();  <span class="comment">// 获取分钟数(0-59)</span></span><br><span class="line">date.<span class="title function_">getSeconds</span>();  <span class="comment">// 获取秒数(0-59)</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="comment">// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">1398250549490</span>);</span><br><span class="line">Y = date.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">M = (date.<span class="title function_">getMonth</span>()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+(date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) : date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">D = date.<span class="title function_">getDate</span>() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">h = date.<span class="title function_">getHours</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">m = date.<span class="title function_">getMinutes</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">s = date.<span class="title function_">getSeconds</span>(); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(Y+M+D+h+m+s); </span><br><span class="line"><span class="comment">// 输出结果：2014-04-23 18:55:49</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <categories>
+        <category>JS时间戳和时间之间转换</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Electron热加载</title>
+    <url>/2022/11/27/Electron%E7%83%AD%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<h4 id="安装Electron热加载插件"><a href="#安装Electron热加载插件" class="headerlink" title="安装Electron热加载插件"></a>安装Electron热加载插件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在项目的根目录下安装 electron-reloader，国内建议使用 cnpm 代替 npm</span><br><span class="line">npm install electron-reloader --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入热加载插件"><a href="#导入热加载插件" class="headerlink" title="导入热加载插件"></a>导入热加载插件</h4><p>打开项目下的 package.json 文件，找到里面配置的入口文件。<br>如图我这里配置的是 main.js 文件：</p>
+<p><img src="/images/source/electron%E7%83%AD%E5%8A%A0%E8%BD%BD.png" alt="electron热加载" title="electron热加载"></p>
+<p>打开入口文件，导入热加载插件：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在入口文件对的顶部配置热加载</span></span><br><span class="line"><span class="comment">// 热加载</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="built_in">require</span>(<span class="string">&#x27;electron-reloader&#x27;</span>)(<span class="variable language_">module</span>, &#123;&#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (_) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>然后保存并重新手动运行项目，热加载就能生效了。修改了代码后直接保存就能触发热加载自动更新运行项目，再也不需要反复手动运行项目了。</p>
+]]></content>
+      <categories>
+        <category>Electron</category>
+      </categories>
+      <tags>
+        <tag>Electron</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>博客内容格式配置与说明</title>
+    <url>/2022/11/27/README/</url>
+    <content><![CDATA[<blockquote>
+<p>编写博客标题说明</p>
+</blockquote>
+<h2 id="我的博客，这是一个说明文件"><a href="#我的博客，这是一个说明文件" class="headerlink" title="我的博客，这是一个说明文件"></a>我的博客，这是一个说明文件</h2><h1 id="标题一-1"><a href="#标题一-1" class="headerlink" title="标题一|1 #"></a>标题一|1 #</h1><h2 id="标题二-2"><a href="#标题二-2" class="headerlink" title="标题二|2 ##"></a>标题二|2 ##</h2><h3 id="标题三-3"><a href="#标题三-3" class="headerlink" title="标题三|3 ###"></a>标题三|3 ###</h3><h4 id="标题四-4"><a href="#标题四-4" class="headerlink" title="标题四|4 ####"></a>标题四|4 ####</h4><h5 id="标题五-5"><a href="#标题五-5" class="headerlink" title="标题五|5 #####"></a>标题五|5 #####</h5><h6 id="标题-6"><a href="#标题-6" class="headerlink" title="标题|6 ######"></a>标题|6 ######</h6><blockquote>
+<p>`&#96;&#96;开头`&#96;&#96;结尾是【代码块】，会出现copy字样</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>博客</tag>
+        <tag>Readme</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>vue 在系统上禁止运行脚本</title>
     <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<ol>
@@ -284,6 +396,25 @@ hexo s
       <tags>
         <tag>Vue</tag>
         <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Postman汉化</title>
+    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
+    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
+<span id="more"></span>
+<ol>
+<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
+<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>软件&amp;硬件问题汇总</category>
+      </categories>
+      <tags>
+        <tag>Postman</tag>
+        <tag>汉化</tag>
+        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -307,41 +438,6 @@ hexo s
       <tags>
         <tag>windows系统</tag>
         <tag>方法</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>vue项目启动报错：Syntax Error: Error: Node Sass version 7.0.3 is incompatible with ^4.0.0.</title>
-    <url>/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/</url>
-    <content><![CDATA[<p>第一步</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall node-sass</span><br></pre></td></tr></table></figure>
-<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99.png" alt="vue启动报错" title="vue启动报错"></p>
-<p>第二步</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i -D sass</span><br></pre></td></tr></table></figure>
-<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E4%BA%8C.png" alt="vue启动成功" title="vue启动成功"></p>
-]]></content>
-      <categories>
-        <category>vue项目启动报错</category>
-      </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Vue启动报错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装依赖时报错：npm ERR! code ERESOLVE npm ERR! ERESOLVE could not resolve npm ERR! npm ERR! While resolving</title>
-    <url>/2022/11/27/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Anpm-ERR-code-ERESOLVE-npm-ERR-ERESOLVE-could-not-resolve-npm-ERR-npm-ERR-While-resolving/</url>
-    <content><![CDATA[<p><strong>错误原因</strong>：可能是npm版本问题报错</p>
-<p><strong>解决方法</strong>：在完整的指令后面添加–legacy-peer-deps</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--legacy-peer-deps**</span><br></pre></td></tr></table></figure>
-
-<p>即以下这种</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i axios -S --legacy-peer-deps</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>安装依赖时报错</category>
-      </categories>
-      <tags>
-        <tag>安装依赖时报错</tag>
-        <tag>npm</tag>
       </tags>
   </entry>
 </search>

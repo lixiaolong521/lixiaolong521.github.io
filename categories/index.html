@@ -59,7 +59,7 @@
   
     <h1 class="page-type-title">分类</h1>
     <div class="categories-box">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E4%B8%BB%E9%A2%98/">Hexo主题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSON%E7%9A%84parse%E4%B8%8Estringify/">JSON的parse与stringify</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/">JS时间戳和时间之间转换</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue%E4%BC%A0%E5%8F%82/">Vue传参</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/">vue项目启动报错</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99/">安装依赖时报错</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6-%E7%A1%AC%E4%BB%B6%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">软件&硬件问题汇总</a><span class="category-list-count">3</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Electron/">Electron</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo%E4%B8%BB%E9%A2%98/">Hexo主题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JSON%E7%9A%84parse%E4%B8%8Estringify/">JSON的parse与stringify</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/">JS时间戳和时间之间转换</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vscode%E8%AE%BE%E7%BD%AE%E5%BF%AB%E6%8D%B7%E9%94%AE/">Vscode设置快捷键</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vue%E4%BC%A0%E5%8F%82/">Vue传参</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/">vue项目启动报错</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99/">安装依赖时报错</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%BD%AF%E4%BB%B6-%E7%A1%AC%E4%BB%B6%E9%97%AE%E9%A2%98%E6%B1%87%E6%80%BB/">软件&硬件问题汇总</a><span class="category-list-count">3</span></li></ul>
     </div>
   
 </section>
@@ -145,6 +145,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/envelope">信</a>
     </li>
     
   </ul>
@@ -337,7 +341,7 @@
     var initCopyCode = function(){
       var copyHtml = '';
       copyHtml += '<button class="btn-copy" data-clipboard-snippet="">';
-      copyHtml += '<i class="ri-file-copy-2-line"></i><span>COPY</span>';
+      copyHtml += '<i class="ri-file-copy-2-line"></i><span>复制</span>';
       copyHtml += '</button>';
       $(".highlight .code pre").before(copyHtml);
       $(".article pre code").before(copyHtml);
@@ -353,12 +357,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-checkbox-circle-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPIED';
+        $span[0].innerText = '已复制';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-checkbox-circle-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
       clipboard.on('error', function(e) {
@@ -369,12 +373,12 @@
         $icon.removeClass('ri-file-copy-2-line');
         $icon.addClass('ri-time-line');
         let $span = $($btn.find('span'));
-        $span[0].innerText = 'COPY FAILED';
+        $span[0].innerText = '复制失败';
         
         wait(function () { // 等待两秒钟后恢复
           $icon.removeClass('ri-time-line');
           $icon.addClass('ri-file-copy-2-line');
-          $span[0].innerText = 'COPY';
+          $span[0].innerText = '复制';
         }, 2000);
       });
     }
