@@ -1,6 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Electron热加载</title>
+    <url>/2022/11/27/Electron%E7%83%AD%E5%8A%A0%E8%BD%BD/</url>
+    <content><![CDATA[<h4 id="安装Electron热加载插件"><a href="#安装Electron热加载插件" class="headerlink" title="安装Electron热加载插件"></a>安装Electron热加载插件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在项目的根目录下安装 electron-reloader，国内建议使用 cnpm 代替 npm</span><br><span class="line">npm install electron-reloader --save-dev</span><br></pre></td></tr></table></figure>
+
+<h4 id="导入热加载插件"><a href="#导入热加载插件" class="headerlink" title="导入热加载插件"></a>导入热加载插件</h4><p>打开项目下的 package.json 文件，找到里面配置的入口文件。<br>如图我这里配置的是 main.js 文件：</p>
+<p><img src="/images/source/electron%E7%83%AD%E5%8A%A0%E8%BD%BD.png" alt="electron热加载" title="electron热加载"></p>
+<p>打开入口文件，导入热加载插件：</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在入口文件对的顶部配置热加载</span></span><br><span class="line"><span class="comment">// 热加载</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="built_in">require</span>(<span class="string">&#x27;electron-reloader&#x27;</span>)(<span class="variable language_">module</span>, &#123;&#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (_) &#123; &#125;</span><br></pre></td></tr></table></figure>
+<p>然后保存并重新手动运行项目，热加载就能生效了。修改了代码后直接保存就能触发热加载自动更新运行项目，再也不需要反复手动运行项目了。</p>
+]]></content>
+      <categories>
+        <category>Electron</category>
+      </categories>
+      <tags>
+        <tag>Electron</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>JSON的parse与stringify区别</title>
+    <url>/2022/11/27/JSON%E7%9A%84parse%E4%B8%8Estringify%E5%8C%BA%E5%88%AB/</url>
+    <content><![CDATA[<h4 id="一、JSON-parse-与JSON-stringify-的区别"><a href="#一、JSON-parse-与JSON-stringify-的区别" class="headerlink" title="一、JSON.parse()与JSON.stringify()的区别"></a>一、JSON.parse()与JSON.stringify()的区别</h4><blockquote>
+<p>JSON.parse()将JSON字符串转为一个对象，而JSON.stringify()是将 JavaScript 对象转换为 JSON 字符串.</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">&#x27;&#123; &quot;sites&quot; : [&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Runoob&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Taobao&quot; , &quot;url&quot;:&quot;www.taobao.com&quot; &#125; ]&#125;&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(text);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line">str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="comment">//obj = JSON.parse(text);</span></span><br><span class="line">&#123;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)&#125;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)<span class="number">0</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Runoob&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.runoob.com&#x27;</span>&#125;<span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Google&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.google.com&#x27;</span>&#125;<span class="number">2</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Taobao&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.taobao.com&#x27;</span>&#125;<span class="attr">length</span>: <span class="number">3</span>[[<span class="title class_">Prototype</span>]]: <span class="title class_">Array</span>(<span class="number">0</span>)[[<span class="title class_">Prototype</span>]]: <span class="title class_">Object</span></span><br><span class="line"><span class="comment">//str = JSON.stringify(obj)</span></span><br><span class="line">&#123;<span class="string">&quot;sites&quot;</span>:[&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Runoob&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.runoob.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.google.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Taobao&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.taobao.com&quot;</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>注：使用JSON.parse()时，字符串必须符合JSON格式，即键值都必须使用双引号包裹：</strong></em>❤</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;[&quot;1&quot;,&quot;2&quot;]&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;[&#x27;1&#x27;,&#x27;2&#x27;]&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(a));   <span class="comment">// Array [1,2]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(b));  <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="两者的用法"><a href="#两者的用法" class="headerlink" title="两者的用法"></a>两者的用法</h4><h6 id="让localStorage-x2F-sessionStorage可以存储对象"><a href="#让localStorage-x2F-sessionStorage可以存储对象" class="headerlink" title="让localStorage&#x2F;sessionStorage可以存储对象"></a>让localStorage&#x2F;sessionStorage可以存储对象</h6><p>在开发过程中，我们存储的数据大部分为对象类型，但是localStorage&#x2F;sessionStorage只能存储为字符串类型，所以，我们在使用的时候就可以配合JSON.parse()与JSON.stringify()来存取数据</p>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>JSON.stringify()与toString()的区别</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr);    <span class="comment">// &#x27;[1,2,3]&#x27;</span></span><br><span class="line">arr.<span class="title function_">toString</span>();    <span class="comment">// 1,2,3</span></span><br></pre></td></tr></table></figure>
+<p>两者都是可以把数组转为字符串，但是，JSON.stringify() 面向的更多是对象，toString() 并不能对 { name : ‘lxy’ } 这类对象实现你想要的操作，面向的更多是数字。</p>
+]]></content>
+      <categories>
+        <category>JSON的parse与stringify</category>
+      </categories>
+      <tags>
+        <tag>JSON的parse与stringify</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Hexo及主题的相关配置</title>
     <url>/2022/11/22/Hexo%E5%8F%8A%E4%B8%BB%E9%A2%98%E7%9A%84%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<p>介绍如何安装Hexo及下载主题和配置主题，并且上传到Github成功访问</p>
@@ -121,6 +162,40 @@ hexo s
       </tags>
   </entry>
   <entry>
+    <title>博客内容格式配置与说明</title>
+    <url>/2022/11/27/README/</url>
+    <content><![CDATA[<blockquote>
+<p>编写博客标题说明</p>
+</blockquote>
+<h2 id="我的博客，这是一个说明文件"><a href="#我的博客，这是一个说明文件" class="headerlink" title="我的博客，这是一个说明文件"></a>我的博客，这是一个说明文件</h2><h1 id="标题一-1"><a href="#标题一-1" class="headerlink" title="标题一|1 #"></a>标题一|1 #</h1><h2 id="标题二-2"><a href="#标题二-2" class="headerlink" title="标题二|2 ##"></a>标题二|2 ##</h2><h3 id="标题三-3"><a href="#标题三-3" class="headerlink" title="标题三|3 ###"></a>标题三|3 ###</h3><h4 id="标题四-4"><a href="#标题四-4" class="headerlink" title="标题四|4 ####"></a>标题四|4 ####</h4><h5 id="标题五-5"><a href="#标题五-5" class="headerlink" title="标题五|5 #####"></a>标题五|5 #####</h5><h6 id="标题-6"><a href="#标题-6" class="headerlink" title="标题|6 ######"></a>标题|6 ######</h6><blockquote>
+<p>`&#96;&#96;开头`&#96;&#96;结尾是【代码块】，会出现copy字样</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>博客</tag>
+        <tag>Readme</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Postman汉化</title>
+    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
+    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
+<span id="more"></span>
+<ol>
+<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
+<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
+</ol>
+]]></content>
+      <categories>
+        <category>软件&amp;硬件问题汇总</category>
+      </categories>
+      <tags>
+        <tag>Postman</tag>
+        <tag>汉化</tag>
+        <tag>软件</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Javascript常用函数、方法速查手册</title>
     <url>/2022/11/27/Javascript%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0%E3%80%81%E6%96%B9%E6%B3%95%E9%80%9F%E6%9F%A5%E6%89%8B%E5%86%8C/</url>
     <content><![CDATA[<h4 id="Array对象"><a href="#Array对象" class="headerlink" title="Array对象"></a>Array对象</h4><p>这部分主要对原生JS数组方法进行归纳</p>
@@ -141,62 +216,22 @@ hexo s
       </tags>
   </entry>
   <entry>
-    <title>vue项目启动报错：Syntax Error: Error: Node Sass version 7.0.3 is incompatible with ^4.0.0.</title>
-    <url>/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/</url>
-    <content><![CDATA[<p>第一步</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall node-sass</span><br></pre></td></tr></table></figure>
-<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99.png" alt="vue启动报错" title="vue启动报错"></p>
-<p>第二步</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i -D sass</span><br></pre></td></tr></table></figure>
-<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E4%BA%8C.png" alt="vue启动成功" title="vue启动成功"></p>
+    <title>JS时间戳和时间之间转换</title>
+    <url>/2022/11/27/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/</url>
+    <content><![CDATA[<p>一、时间转换时间戳</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">//时间对象</span></span><br><span class="line"><span class="keyword">var</span> str = date.<span class="title function_">getTime</span>(); <span class="comment">//转换成时间戳</span></span><br></pre></td></tr></table></figure>
+<p>二、时间戳转换为时间</p>
+<ol>
+<li>转换成形如 2018年1月4日 14:00:00 格式：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getDate</span>(<span class="params">date</span>)&#123; </span><br><span class="line">    <span class="keyword">var</span> t = <span class="keyword">new</span> <span class="title class_">Date</span>(date).<span class="title function_">toLocaleString</span>(); </span><br><span class="line">    <span class="keyword">return</span> t; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>也可以这样<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 也很简单</span></span><br><span class="line"><span class="keyword">var</span> strtime = <span class="string">&#x27;2014-04-23 18:55:49:123&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(strtime.<span class="title function_">replace</span>(<span class="regexp">/-/g</span>, <span class="string">&#x27;/&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 有三种方式获取，在后面会讲到三种方式的区别</span></span><br><span class="line">time1 = date.<span class="title function_">getTime</span>();</span><br><span class="line">time2 = date.<span class="title function_">valueOf</span>();</span><br><span class="line">time3 = <span class="title class_">Date</span>.<span class="title function_">parse</span>(date);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">三种获取的区别：</span></span><br><span class="line"><span class="comment">第一、第二种：会精确到毫秒</span></span><br><span class="line"><span class="comment">第三种：只能精确到秒，毫秒将用0来代替</span></span><br><span class="line"><span class="comment">比如上面代码输出的结果(一眼就能看出区别)：</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549000 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
+<li>转换成更多其他的格式：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单的一句代码</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(时间戳); <span class="comment">//获取一个时间对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 1. 下面是获取时间日期的方法，需要什么样的格式自己拼接起来就好了</span></span><br><span class="line"><span class="comment"> 2. 更多好用的方法可以在这查到 -&gt; http://www.w3school.com.cn/jsref/jsref_obj_date.asp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">date.<span class="title function_">getFullYear</span>();  <span class="comment">// 获取完整的年份(4位,1970)</span></span><br><span class="line">date.<span class="title function_">getMonth</span>();  <span class="comment">// 获取月份(0-11,0代表1月,用的时候记得加上1)</span></span><br><span class="line">date.<span class="title function_">getDate</span>();  <span class="comment">// 获取日(1-31)</span></span><br><span class="line">date.<span class="title function_">getTime</span>();  <span class="comment">// 获取时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">date.<span class="title function_">getHours</span>();  <span class="comment">// 获取小时数(0-23)</span></span><br><span class="line">date.<span class="title function_">getMinutes</span>();  <span class="comment">// 获取分钟数(0-59)</span></span><br><span class="line">date.<span class="title function_">getSeconds</span>();  <span class="comment">// 获取秒数(0-59)</span></span><br></pre></td></tr></table></figure></li>
+</ol>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="comment">// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">1398250549490</span>);</span><br><span class="line">Y = date.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">M = (date.<span class="title function_">getMonth</span>()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+(date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) : date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">D = date.<span class="title function_">getDate</span>() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">h = date.<span class="title function_">getHours</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">m = date.<span class="title function_">getMinutes</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">s = date.<span class="title function_">getSeconds</span>(); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(Y+M+D+h+m+s); </span><br><span class="line"><span class="comment">// 输出结果：2014-04-23 18:55:49</span></span><br></pre></td></tr></table></figure>
+
 ]]></content>
       <categories>
-        <category>vue项目启动报错</category>
+        <category>JS时间戳和时间之间转换</category>
       </categories>
-      <tags>
-        <tag>Vue</tag>
-        <tag>Vue启动报错</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>安装依赖时报错：npm ERR! code ERESOLVE npm ERR! ERESOLVE could not resolve npm ERR! npm ERR! While resolving</title>
-    <url>/2022/11/27/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Anpm-ERR-code-ERESOLVE-npm-ERR-ERESOLVE-could-not-resolve-npm-ERR-npm-ERR-While-resolving/</url>
-    <content><![CDATA[<p><strong>错误原因</strong>：可能是npm版本问题报错</p>
-<p><strong>解决方法</strong>：在完整的指令后面添加–legacy-peer-deps</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--legacy-peer-deps**</span><br></pre></td></tr></table></figure>
-
-<p>即以下这种</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i axios -S --legacy-peer-deps</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>安装依赖时报错</category>
-      </categories>
-      <tags>
-        <tag>安装依赖时报错</tag>
-        <tag>npm</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>JSON的parse与stringify区别</title>
-    <url>/2022/11/27/JSON%E7%9A%84parse%E4%B8%8Estringify%E5%8C%BA%E5%88%AB/</url>
-    <content><![CDATA[<h4 id="一、JSON-parse-与JSON-stringify-的区别"><a href="#一、JSON-parse-与JSON-stringify-的区别" class="headerlink" title="一、JSON.parse()与JSON.stringify()的区别"></a>一、JSON.parse()与JSON.stringify()的区别</h4><blockquote>
-<p>JSON.parse()将JSON字符串转为一个对象，而JSON.stringify()是将 JavaScript 对象转换为 JSON 字符串.</p>
-</blockquote>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">&#x27;&#123; &quot;sites&quot; : [&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Runoob&quot; , &quot;url&quot;:&quot;www.runoob.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Google&quot; , &quot;url&quot;:&quot;www.google.com&quot; &#125;,&#x27;</span> +</span><br><span class="line">    <span class="string">&#x27;&#123; &quot;name&quot;:&quot;Taobao&quot; , &quot;url&quot;:&quot;www.taobao.com&quot; &#125; ]&#125;&#x27;</span>;</span><br><span class="line">    </span><br><span class="line">obj = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(text);</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)</span><br><span class="line">str = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(obj)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(str)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 结果</span></span><br><span class="line"><span class="comment">//obj = JSON.parse(text);</span></span><br><span class="line">&#123;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)&#125;<span class="attr">sites</span>: <span class="title class_">Array</span>(<span class="number">3</span>)<span class="number">0</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Runoob&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.runoob.com&#x27;</span>&#125;<span class="number">1</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Google&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.google.com&#x27;</span>&#125;<span class="number">2</span>: &#123;<span class="attr">name</span>: <span class="string">&#x27;Taobao&#x27;</span>, <span class="attr">url</span>: <span class="string">&#x27;www.taobao.com&#x27;</span>&#125;<span class="attr">length</span>: <span class="number">3</span>[[<span class="title class_">Prototype</span>]]: <span class="title class_">Array</span>(<span class="number">0</span>)[[<span class="title class_">Prototype</span>]]: <span class="title class_">Object</span></span><br><span class="line"><span class="comment">//str = JSON.stringify(obj)</span></span><br><span class="line">&#123;<span class="string">&quot;sites&quot;</span>:[&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Runoob&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.runoob.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Google&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.google.com&quot;</span>&#125;,&#123;<span class="string">&quot;name&quot;</span>:<span class="string">&quot;Taobao&quot;</span>,<span class="string">&quot;url&quot;</span>:<span class="string">&quot;www.taobao.com&quot;</span>&#125;]&#125;</span><br></pre></td></tr></table></figure>
-
-<p><em><strong>注：使用JSON.parse()时，字符串必须符合JSON格式，即键值都必须使用双引号包裹：</strong></em>❤</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> a = <span class="string">&#x27;[&quot;1&quot;,&quot;2&quot;]&#x27;</span>;</span><br><span class="line"><span class="keyword">let</span> b = <span class="string">&quot;[&#x27;1&#x27;,&#x27;2&#x27;]&quot;</span>;</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(a));   <span class="comment">// Array [1,2]</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title class_">JSON</span>.<span class="title function_">parse</span>(b));  <span class="comment">// 报错</span></span><br></pre></td></tr></table></figure>
-
-<h4 id="两者的用法"><a href="#两者的用法" class="headerlink" title="两者的用法"></a>两者的用法</h4><h6 id="让localStorage-x2F-sessionStorage可以存储对象"><a href="#让localStorage-x2F-sessionStorage可以存储对象" class="headerlink" title="让localStorage&#x2F;sessionStorage可以存储对象"></a>让localStorage&#x2F;sessionStorage可以存储对象</h6><p>在开发过程中，我们存储的数据大部分为对象类型，但是localStorage&#x2F;sessionStorage只能存储为字符串类型，所以，我们在使用的时候就可以配合JSON.parse()与JSON.stringify()来存取数据</p>
-<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>JSON.stringify()与toString()的区别</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line"><span class="title class_">JSON</span>.<span class="title function_">stringify</span>(arr);    <span class="comment">// &#x27;[1,2,3]&#x27;</span></span><br><span class="line">arr.<span class="title function_">toString</span>();    <span class="comment">// 1,2,3</span></span><br></pre></td></tr></table></figure>
-<p>两者都是可以把数组转为字符串，但是，JSON.stringify() 面向的更多是对象，toString() 并不能对 { name : ‘lxy’ } 这类对象实现你想要的操作，面向的更多是数字。</p>
-]]></content>
-      <categories>
-        <category>JSON的parse与stringify</category>
-      </categories>
-      <tags>
-        <tag>JSON的parse与stringify</tag>
-      </tags>
   </entry>
   <entry>
     <title>Vue路由传参三种方式</title>
@@ -235,57 +270,6 @@ hexo s
       </tags>
   </entry>
   <entry>
-    <title>JS时间戳和时间之间转换</title>
-    <url>/2022/11/27/JS%E6%97%B6%E9%97%B4%E6%88%B3%E5%92%8C%E6%97%B6%E9%97%B4%E4%B9%8B%E9%97%B4%E8%BD%AC%E6%8D%A2/</url>
-    <content><![CDATA[<p>一、时间转换时间戳</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">//时间对象</span></span><br><span class="line"><span class="keyword">var</span> str = date.<span class="title function_">getTime</span>(); <span class="comment">//转换成时间戳</span></span><br></pre></td></tr></table></figure>
-<p>二、时间戳转换为时间</p>
-<ol>
-<li>转换成形如 2018年1月4日 14:00:00 格式：<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">getDate</span>(<span class="params">date</span>)&#123; </span><br><span class="line">    <span class="keyword">var</span> t = <span class="keyword">new</span> <span class="title class_">Date</span>(date).<span class="title function_">toLocaleString</span>(); </span><br><span class="line">    <span class="keyword">return</span> t; </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>也可以这样<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 也很简单</span></span><br><span class="line"><span class="keyword">var</span> strtime = <span class="string">&#x27;2014-04-23 18:55:49:123&#x27;</span>;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(strtime.<span class="title function_">replace</span>(<span class="regexp">/-/g</span>, <span class="string">&#x27;/&#x27;</span>));</span><br><span class="line"> </span><br><span class="line"><span class="comment">// 有三种方式获取，在后面会讲到三种方式的区别</span></span><br><span class="line">time1 = date.<span class="title function_">getTime</span>();</span><br><span class="line">time2 = date.<span class="title function_">valueOf</span>();</span><br><span class="line">time3 = <span class="title class_">Date</span>.<span class="title function_">parse</span>(date);</span><br><span class="line"> </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">三种获取的区别：</span></span><br><span class="line"><span class="comment">第一、第二种：会精确到毫秒</span></span><br><span class="line"><span class="comment">第三种：只能精确到秒，毫秒将用0来代替</span></span><br><span class="line"><span class="comment">比如上面代码输出的结果(一眼就能看出区别)：</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549123</span></span><br><span class="line"><span class="comment">1398250549000 </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure></li>
-<li>转换成更多其他的格式：<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 简单的一句代码</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(时间戳); <span class="comment">//获取一个时间对象</span></span><br><span class="line"> </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> 1. 下面是获取时间日期的方法，需要什么样的格式自己拼接起来就好了</span></span><br><span class="line"><span class="comment"> 2. 更多好用的方法可以在这查到 -&gt; http://www.w3school.com.cn/jsref/jsref_obj_date.asp</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line">date.<span class="title function_">getFullYear</span>();  <span class="comment">// 获取完整的年份(4位,1970)</span></span><br><span class="line">date.<span class="title function_">getMonth</span>();  <span class="comment">// 获取月份(0-11,0代表1月,用的时候记得加上1)</span></span><br><span class="line">date.<span class="title function_">getDate</span>();  <span class="comment">// 获取日(1-31)</span></span><br><span class="line">date.<span class="title function_">getTime</span>();  <span class="comment">// 获取时间(从1970.1.1开始的毫秒数)</span></span><br><span class="line">date.<span class="title function_">getHours</span>();  <span class="comment">// 获取小时数(0-23)</span></span><br><span class="line">date.<span class="title function_">getMinutes</span>();  <span class="comment">// 获取分钟数(0-59)</span></span><br><span class="line">date.<span class="title function_">getSeconds</span>();  <span class="comment">// 获取秒数(0-59)</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">//例子</span></span><br><span class="line"><span class="comment">// 比如需要这样的格式 yyyy-MM-dd hh:mm:ss</span></span><br><span class="line"><span class="keyword">var</span> date = <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="number">1398250549490</span>);</span><br><span class="line">Y = date.<span class="title function_">getFullYear</span>() + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">M = (date.<span class="title function_">getMonth</span>()+<span class="number">1</span> &lt; <span class="number">10</span> ? <span class="string">&#x27;0&#x27;</span>+(date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) : date.<span class="title function_">getMonth</span>()+<span class="number">1</span>) + <span class="string">&#x27;-&#x27;</span>;</span><br><span class="line">D = date.<span class="title function_">getDate</span>() + <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">h = date.<span class="title function_">getHours</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">m = date.<span class="title function_">getMinutes</span>() + <span class="string">&#x27;:&#x27;</span>;</span><br><span class="line">s = date.<span class="title function_">getSeconds</span>(); </span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(Y+M+D+h+m+s); </span><br><span class="line"><span class="comment">// 输出结果：2014-04-23 18:55:49</span></span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <categories>
-        <category>JS时间戳和时间之间转换</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Electron热加载</title>
-    <url>/2022/11/27/Electron%E7%83%AD%E5%8A%A0%E8%BD%BD/</url>
-    <content><![CDATA[<h4 id="安装Electron热加载插件"><a href="#安装Electron热加载插件" class="headerlink" title="安装Electron热加载插件"></a>安装Electron热加载插件</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 在项目的根目录下安装 electron-reloader，国内建议使用 cnpm 代替 npm</span><br><span class="line">npm install electron-reloader --save-dev</span><br></pre></td></tr></table></figure>
-
-<h4 id="导入热加载插件"><a href="#导入热加载插件" class="headerlink" title="导入热加载插件"></a>导入热加载插件</h4><p>打开项目下的 package.json 文件，找到里面配置的入口文件。<br>如图我这里配置的是 main.js 文件：</p>
-<p><img src="/images/source/electron%E7%83%AD%E5%8A%A0%E8%BD%BD.png" alt="electron热加载" title="electron热加载"></p>
-<p>打开入口文件，导入热加载插件：</p>
-<figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 在入口文件对的顶部配置热加载</span></span><br><span class="line"><span class="comment">// 热加载</span></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">	<span class="built_in">require</span>(<span class="string">&#x27;electron-reloader&#x27;</span>)(<span class="variable language_">module</span>, &#123;&#125;);</span><br><span class="line">&#125; <span class="keyword">catch</span> (_) &#123; &#125;</span><br></pre></td></tr></table></figure>
-<p>然后保存并重新手动运行项目，热加载就能生效了。修改了代码后直接保存就能触发热加载自动更新运行项目，再也不需要反复手动运行项目了。</p>
-]]></content>
-      <categories>
-        <category>Electron</category>
-      </categories>
-      <tags>
-        <tag>Electron</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>博客内容格式配置与说明</title>
-    <url>/2022/11/27/README/</url>
-    <content><![CDATA[<blockquote>
-<p>编写博客标题说明</p>
-</blockquote>
-<h2 id="我的博客，这是一个说明文件"><a href="#我的博客，这是一个说明文件" class="headerlink" title="我的博客，这是一个说明文件"></a>我的博客，这是一个说明文件</h2><h1 id="标题一-1"><a href="#标题一-1" class="headerlink" title="标题一|1 #"></a>标题一|1 #</h1><h2 id="标题二-2"><a href="#标题二-2" class="headerlink" title="标题二|2 ##"></a>标题二|2 ##</h2><h3 id="标题三-3"><a href="#标题三-3" class="headerlink" title="标题三|3 ###"></a>标题三|3 ###</h3><h4 id="标题四-4"><a href="#标题四-4" class="headerlink" title="标题四|4 ####"></a>标题四|4 ####</h4><h5 id="标题五-5"><a href="#标题五-5" class="headerlink" title="标题五|5 #####"></a>标题五|5 #####</h5><h6 id="标题-6"><a href="#标题-6" class="headerlink" title="标题|6 ######"></a>标题|6 ######</h6><blockquote>
-<p>`&#96;&#96;开头`&#96;&#96;结尾是【代码块】，会出现copy字样</p>
-</blockquote>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>博客</tag>
-        <tag>Readme</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>vue 在系统上禁止运行脚本</title>
     <url>/2022/11/22/vue-%E5%9C%A8%E7%B3%BB%E7%BB%9F%E4%B8%8A%E7%A6%81%E6%AD%A2%E8%BF%90%E8%A1%8C%E8%84%9A%E6%9C%AC/</url>
     <content><![CDATA[<ol>
@@ -300,25 +284,6 @@ hexo s
       <tags>
         <tag>Vue</tag>
         <tag>Error</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Postman汉化</title>
-    <url>/2022/11/22/Postman%E6%B1%89%E5%8C%96/</url>
-    <content><![CDATA[<p>（Postman默认安装路径为:C:\Users\Admin\AppData\Local\Postman）</p>
-<span id="more"></span>
-<ol>
-<li>下载Postman对应版本汉化包，汉化包github下载地址:<a href="https://github.com/hlmd/Postman-cn/releases">https://github.com/hlmd/Postman-cn/releases</a></li>
-<li>放置到postman安装路径下Postman\app-xxxx\resources，再次重新启动Postman即可完成汉化。</li>
-</ol>
-]]></content>
-      <categories>
-        <category>软件&amp;硬件问题汇总</category>
-      </categories>
-      <tags>
-        <tag>Postman</tag>
-        <tag>汉化</tag>
-        <tag>软件</tag>
       </tags>
   </entry>
   <entry>
@@ -342,6 +307,41 @@ hexo s
       <tags>
         <tag>windows系统</tag>
         <tag>方法</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vue项目启动报错：Syntax Error: Error: Node Sass version 7.0.3 is incompatible with ^4.0.0.</title>
+    <url>/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/</url>
+    <content><![CDATA[<p>第一步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm uninstall node-sass</span><br></pre></td></tr></table></figure>
+<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99.png" alt="vue启动报错" title="vue启动报错"></p>
+<p>第二步</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i -D sass</span><br></pre></td></tr></table></figure>
+<p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E4%BA%8C.png" alt="vue启动成功" title="vue启动成功"></p>
+]]></content>
+      <categories>
+        <category>vue项目启动报错</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>Vue启动报错</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>安装依赖时报错：npm ERR! code ERESOLVE npm ERR! ERESOLVE could not resolve npm ERR! npm ERR! While resolving</title>
+    <url>/2022/11/27/%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96%E6%97%B6%E6%8A%A5%E9%94%99%EF%BC%9Anpm-ERR-code-ERESOLVE-npm-ERR-ERESOLVE-could-not-resolve-npm-ERR-npm-ERR-While-resolving/</url>
+    <content><![CDATA[<p><strong>错误原因</strong>：可能是npm版本问题报错</p>
+<p><strong>解决方法</strong>：在完整的指令后面添加–legacy-peer-deps</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">--legacy-peer-deps**</span><br></pre></td></tr></table></figure>
+
+<p>即以下这种</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i axios -S --legacy-peer-deps</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>安装依赖时报错</category>
+      </categories>
+      <tags>
+        <tag>安装依赖时报错</tag>
+        <tag>npm</tag>
       </tags>
   </entry>
 </search>
