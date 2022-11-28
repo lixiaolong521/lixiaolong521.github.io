@@ -209,11 +209,15 @@ body,
 html {
     -webkit-text-size-adjust: 100%
 }
-
+@font-face {
+    font-family: 'AaNSBFWDRG';
+    src: url('../css/fonts/YEFONTRuanMengOuBaoTi-Regylar.woff2') format('woff2'),
+        url('../css/fonts/YEFONTRuanMengOuBaoTi-Regylar.woff') format('woff');
+}
 body {
     position: relative;
     background-color: #fff;
-    font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, 微软雅黑, Arial, sans-serif;
+    font-family: AaNSBFWDRG,Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, 微软雅黑, Arial, sans-serif;
     font-size: 1.4rem;
     line-height: 1.7;
     color: #403e3e;
@@ -469,7 +473,8 @@ button {
     padding: 0 1.5rem;
     width: 100%;
     overflow: auto;
-    border-left: .3rem solid #cce5ff;
+    /* cce5ff */
+    border-left: .3rem solid #ff6057;
     color: #5c6b72
 }
 
@@ -807,7 +812,7 @@ button {
 
 .cover-inner #subtitle-box,
 .cover-inner h1 {
-    font-family: Titillium Web, PingFang SC, Hiragino Sans GB, Microsoft JhengHei, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif
+    /* font-family: Titillium Web, PingFang SC, Hiragino Sans GB, Microsoft JhengHei, Microsoft YaHei, Helvetica Neue, Helvetica, Arial, sans-serif */
 }
 
 .cover-inner #subtitle-box {
@@ -1037,7 +1042,7 @@ button {
 }
 
 .article .sea-center:after {
-    border-bottom: 2px dashed #cce5ff;
+    border-bottom: 2px dashed #ff6057;
     content: "";
     width: 100px;
     display: block;
@@ -1052,7 +1057,7 @@ button {
     border-radius: 2px;
     font-style: normal;
     font-size: 12px;
-    background-color: #ea434a;
+    background-color: #fd1919;
     color: #fff;
     height: 22px;
     line-height: 24px;
@@ -1158,7 +1163,7 @@ button {
 .article-header .article-title {
     font-size: 34px;
     font-weight: 700;
-    border-left: 4px solid #403e3e
+    border-left: 4px solid #ff5252
 }
 
 .article-header .article-author,
@@ -1457,7 +1462,8 @@ a.toc-link {
 }
 
 .toc-link:before {
-    background-color: #cce5ff;
+    /* #cce5ff */
+    background-color: #ff6057;
     content: " ";
     display: inline-block;
     height: inherit;
@@ -1468,7 +1474,7 @@ a.toc-link {
 }
 
 .is-active-link:before {
-    background-color: #3d85c6
+    background-color: #ff6057
 }
 
 .is-active-link {
