@@ -6,7 +6,7 @@
     <content><![CDATA[<p>介绍如何安装Hexo及下载主题和配置主题，并且上传到Github成功访问</p>
 <span id="more"></span>
 <h2 id="1-下载Hexo"><a href="#1-下载Hexo" class="headerlink" title="1. 下载Hexo"></a>1. 下载Hexo</h2><p>打开cmd窗口  </p>
-<pre><code>npm intall -g hexo
+<pre><code>npm install -g hexo
 </code></pre>
 <br/>
 
