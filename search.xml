@@ -121,6 +121,90 @@ hexo s
       </tags>
   </entry>
   <entry>
+    <title>element-Ui table只显示一行超出文字隐藏为...，鼠标移入显示所有内容。:show-overflow-tooltip=“true“，并设置弹出内容的宽度。</title>
+    <url>/2022/12/02/%E5%8F%AA%E6%98%BE%E7%A4%BA%E4%B8%80%E8%A1%8C%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>给el-table-column设置:show-overflow-tooltip&#x3D;”true”属性可以使单元格超出的内容自动折叠显示为…当鼠标移入时单元格的上方会弹出一个小tips来显示单元格得所有内容。</p>
+<blockquote>
+<p>:show-overflow-tooltip&#x3D;”true”</p>
+</blockquote>
+<h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-table</span></span></span><br><span class="line"><span class="tag">      <span class="attr">:data</span>=<span class="string">&quot;tableData&quot;</span></span></span><br><span class="line"><span class="tag">      @<span class="attr">cell-dblclick</span>=<span class="string">&quot;copyText&quot;</span></span></span><br><span class="line"><span class="tag">      <span class="attr">border</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">el-table-column</span></span></span><br><span class="line"><span class="tag">        <span class="attr">v-for</span>=<span class="string">&quot;(item,index) in bottomCol&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:key</span>=<span class="string">&quot;index&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:prop</span>=<span class="string">&quot;item.prop&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:label</span>=<span class="string">&quot;item.label&quot;</span></span></span><br><span class="line"><span class="tag">        <span class="attr">:show-overflow-tooltip</span>=<span class="string">&quot;true&quot;</span> //<span class="attr">前边一定要加</span> <span class="attr">:</span> <span class="attr">冒号否则报错</span></span></span><br><span class="line"><span class="tag">    &gt;</span></span><br><span class="line">     <span class="tag">&lt;/<span class="name">el-table-column</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">el-table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="小问题"><a href="#小问题" class="headerlink" title="小问题"></a>小问题</h4><p>有时候因为table中的文字非常的多，而show-overflow-tooltip默认是把折叠的内容全部折叠为一行。那么当文字多的时候视觉体验就会变得比较差。</p>
+<p><img src="/images/source/tooltip%E6%8F%90%E7%A4%BA.jpg" alt="tooltip提示" title="tooltip提示"></p>
+<p>tips的class名为.el-tooltip__popper，开始我试着直接通过它class名来给tips设置样式。</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style lang=&quot;scss&quot; scoped&gt;</span><br><span class="line"><span class="selector-class">.el-tooltip__popper</span>&#123;</span><br><span class="line">  <span class="attribute">max-width</span>:<span class="number">20%</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<p>发现并没有效果，后来发现是因为scoped导致的。但是如果去掉scoped样式，那么这个组件的其他style样式就会影响到所有组件。所以我们需要新建一个style标签来修改tips的样式。</p>
+<p><img src="/images/source/tooltip%E6%8F%90%E7%A4%BA2.jpg" alt="tooltip效果" title="tooltip效果"></p>
+<figure class="highlight css"><table><tr><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line"><span class="selector-class">.el-tooltip__popper</span>&#123;</span><br><span class="line">  <span class="attribute">max-width</span>:<span class="number">20%</span></span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>element</category>
+      </categories>
+      <tags>
+        <tag>Vue</tag>
+        <tag>element</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Invalid prop: type check failed for prop “span“. Expected Number with value 8, got String with value</title>
+    <url>/2022/12/02/Invalid%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h4 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h4><p>之所以出现这个问题是因为少一个冒号，span之前有一个冒号。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">el-col</span> <span class="attr">:span</span>=<span class="string">8</span>&gt;</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>错题本</category>
+      </categories>
+      <tags>
+        <tag>Vue错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>GET http://192.168.0.102:8080/sockjs-node/info?t=1647433830643 net::ERR_CONNECTION_REFUSED解决方法</title>
+    <url>/2022/12/02/GET_http%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h4 id="错误原因"><a href="#错误原因" class="headerlink" title="错误原因"></a>错误原因</h4><p>首先 sockjs-node是一个JavaScript库，提供跨浏览器JavaScript的API，创建了一个低延迟、全双工的浏览器和web服务器之间通信通道。</p>
+<p>服务端：sockjs-node（<a href="https://github.com/sockjs/sockjs-node%EF%BC%89">https://github.com/sockjs/sockjs-node）</a><br>客户端：sockjs-clien（<a href="https://github.com/sockjs/sockjs-client%EF%BC%89">https://github.com/sockjs/sockjs-client）</a></p>
+<p>如果你的项目没有用到 sockjs，vuecli 运行 npm run serve 之后 network<br>里面一直调研一个接口，所以我们需要从根源上关闭这个调用。</p>
+<h4 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h4><p>找到这个文件：</p>
+<blockquote>
+<p>…&#x2F;node_modules&#x2F;sockjs-client&#x2F;dist&#x2F;sockjs.js</p>
+</blockquote>
+<p>在大概1600多行，找到 self.xhr.send(payload); 注释掉</p>
+<p>然后重现运行</p>
+]]></content>
+      <categories>
+        <category>错题本</category>
+      </categories>
+      <tags>
+        <tag>Vue错误</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>解决vue中Error in render: “TypeError: Cannot read property ‘avatar‘ of undefined“</title>
+    <url>/2022/12/02/%E8%A7%A3%E5%86%B3vue%E4%B8%ADError%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h4 id="原因分析"><a href="#原因分析" class="headerlink" title="原因分析"></a>原因分析</h4><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Error in render: &quot;TypeError: Cannot read property &#x27;avatar&#x27; of undefined&quot;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h4 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h4><ol>
+<li><p>第一种方案</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">image</span> <span class="attr">v-if</span>=<span class="string">&quot;postInfo.userInfo&quot;</span>  <span class="attr">:src</span>=<span class="string">&quot;postInfo.userInfo.avatar&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>在数据挂在前用v-if判断数据是否存在在进行渲染,但是这个方法有一个缺点就是,当你有很多地方用到第二层数据时候就要多处进行判断同时对会页面加载性能有影响</p>
+</blockquote>
+</li>
+<li><p>第二种方案</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="attr">postInfo</span>: &#123; </span><br><span class="line">		   <span class="attr">userInfo</span>: &#123;&#125;,</span><br><span class="line">		  &#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>前端定义与后端返回的多层结构来接收数据</p>
+</blockquote>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>错题本</category>
+      </categories>
+      <tags>
+        <tag>Vue错误</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>VSCode中如何配置markdown代码片段</title>
     <url>/2022/11/27/VSCode%E4%B8%AD%E5%A6%82%E4%BD%95%E9%85%8D%E7%BD%AEmarkdown%E4%BB%A3%E7%A0%81%E7%89%87%E6%AE%B5/</url>
     <content><![CDATA[<h6 id="Vscode右下角设置⚙-gt-gt-gt-配置用户代码片段"><a href="#Vscode右下角设置⚙-gt-gt-gt-配置用户代码片段" class="headerlink" title="Vscode右下角设置⚙&gt;&gt;&gt;配置用户代码片段"></a>Vscode右下角设置⚙&gt;&gt;&gt;配置用户代码片段</h6><figure class="highlight json"><table><tr><td class="code"><pre><span class="line"><span class="attr">&quot;Print to ```js&quot;</span><span class="punctuation">:</span> <span class="punctuation">&#123;</span> </span><br><span class="line">	<span class="attr">&quot;prefix&quot;</span><span class="punctuation">:</span> <span class="string">&quot;```js&quot;</span><span class="punctuation">,</span><span class="comment">//快捷键</span></span><br><span class="line">	<span class="attr">&quot;body&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">		<span class="string">&quot;``` js&quot;</span><span class="punctuation">,</span><span class="comment">//要输入的代码</span></span><br><span class="line">		<span class="string">&quot;$1&quot;</span><span class="punctuation">,</span></span><br><span class="line">		<span class="string">&quot;```&quot;</span></span><br><span class="line">	<span class="punctuation">]</span><span class="punctuation">,</span></span><br><span class="line">	<span class="attr">&quot;description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;创建代码段js&quot;</span> <span class="comment">//描述</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
@@ -247,11 +331,11 @@ hexo s
 <p><img src="/images/source/vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%E4%BA%8C.png" alt="vue启动成功" title="vue启动成功"></p>
 ]]></content>
       <categories>
-        <category>vue项目启动报错</category>
+        <category>错题本</category>
       </categories>
       <tags>
+        <tag>Vue错误</tag>
         <tag>Vue</tag>
-        <tag>Vue启动报错</tag>
       </tags>
   </entry>
   <entry>
@@ -264,7 +348,7 @@ hexo s
 <p>即以下这种</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">npm i axios -S --legacy-peer-deps</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
-        <category>安装依赖时报错</category>
+        <category>错题本</category>
       </categories>
       <tags>
         <tag>安装依赖时报错</tag>
@@ -375,7 +459,10 @@ hexo s
 <h2 id="我的博客，这是一个说明文件"><a href="#我的博客，这是一个说明文件" class="headerlink" title="我的博客，这是一个说明文件"></a>我的博客，这是一个说明文件</h2><h1 id="标题一-1"><a href="#标题一-1" class="headerlink" title="标题一|1 #"></a>标题一|1 #</h1><h2 id="标题二-2"><a href="#标题二-2" class="headerlink" title="标题二|2 ##"></a>标题二|2 ##</h2><h3 id="标题三-3"><a href="#标题三-3" class="headerlink" title="标题三|3 ###"></a>标题三|3 ###</h3><h4 id="标题四-4"><a href="#标题四-4" class="headerlink" title="标题四|4 ####"></a>标题四|4 ####</h4><h5 id="标题五-5"><a href="#标题五-5" class="headerlink" title="标题五|5 #####"></a>标题五|5 #####</h5><h6 id="标题-6"><a href="#标题-6" class="headerlink" title="标题|6 ######"></a>标题|6 ######</h6><blockquote>
 <p>`&#96;&#96;开头`&#96;&#96;结尾是【代码块】，会出现copy字样</p>
 </blockquote>
-<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>]]></content>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">title: Hexo及主题的相关配置 #标题</span><br><span class="line">date: 2022-11-22 14:50:40 #创建日期</span><br><span class="line">categories: Hexo主题  #分类</span><br><span class="line">tags: [Hexo,yern,博客]  #标签</span><br><span class="line">top: true  #是否置顶 也可用序号代替</span><br><span class="line">archives: Hexo及主题的相关配置 #归档</span><br></pre></td></tr></table></figure>
+<p>   下边的说明          路径                         alt标题</p>
+<p><img src="/images/source/tooltip%E6%8F%90%E7%A4%BA2.jpg" alt="tooltip效果" title="tooltip效果"></p>
+]]></content>
       <tags>
         <tag>博客</tag>
         <tag>Readme</tag>
@@ -394,6 +481,7 @@ hexo s
         <category>软件&amp;硬件问题汇总</category>
       </categories>
       <tags>
+        <tag>Vue错误</tag>
         <tag>Vue</tag>
         <tag>Error</tag>
       </tags>

@@ -15,7 +15,7 @@
         name="viewport"
         content="width=device-width, initial-scale=1, maximum-scale=1"
       />
-      <title>Tag: Vue启动报错 |  Caveolae</title>
+      <title>小插件 |  Caveolae</title>
   <meta name="generator" content="hexo-theme-ayer">
       
       <link rel="shortcut icon" href="/images/足球.svg" />
@@ -56,56 +56,47 @@
       
     <main class="content ">
       <section class="outer">
-  
-  
-  <article class="articles">
+  <article
+  id="小插件-"
+  class="article article-type-小插件"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    <!--    -->
     
-    
-    <h1 class="page-type-title">#&nbspVue启动报错</h1>
-    
-    
-  
-  
-  
-  
-  
-  
-  <div class="archives-wrap">
-    <div class="archive-year-wrap">
-      <a href="/archives/2022" class="archive-year">2022</a>
-    </div>
-    <div class="archives">
-      
-      <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/" class="archive-article-date">
-  <time datetime="2022-11-27T06:06:53.000Z" itemprop="datePublished">11/27</time>
-</a>
+    <header class="article-header">
        
-<h2 itemprop="name">
-  <a class="archive-article-title" href="/2022/11/27/vue%E9%A1%B9%E7%9B%AE%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99%EF%BC%9ASyntax-Error-Error-Node-Sass-version-7-0-3-is-incompatible-with-4-0-0/"
-    >vue项目启动报错：Syntax Error: Error: Node Sass version 7.0.3 is incompatible with ^4.0.0.</a> 
-</h2>
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  小插件
+</h1>
  
 
+      
     </header>
-    
-    
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue/" rel="tag">Vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue%E5%90%AF%E5%8A%A8%E6%8A%A5%E9%94%99/" rel="tag">Vue启动报错</a></li></ul>
-
-    
-  </div>
-</article>
-      
+       
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h4 id="js中秒转化为时分秒"><a href="#js中秒转化为时分秒" class="headerlink" title="js中秒转化为时分秒"></a>js中秒转化为时分秒</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getStoM</span>(<span class="params">value</span>)&#123;</span><br><span class="line">    <span class="comment">//  秒</span></span><br><span class="line">    <span class="keyword">let</span> second = <span class="built_in">parseInt</span>(value)</span><br><span class="line">    <span class="comment">//  分</span></span><br><span class="line">    <span class="keyword">let</span> minute = <span class="number">0</span></span><br><span class="line">    <span class="comment">//  小时</span></span><br><span class="line">    <span class="keyword">let</span> hour = <span class="number">0</span></span><br><span class="line">    <span class="comment">//  天</span></span><br><span class="line">    <span class="comment">//  let day = 0</span></span><br><span class="line">    <span class="comment">//  如果秒数大于60，将秒数转换成整数</span></span><br><span class="line">    <span class="keyword">if</span> (second &gt; <span class="number">60</span>) &#123;</span><br><span class="line">      <span class="comment">//  获取分钟，除以60取整数，得到整数分钟</span></span><br><span class="line">      minute = <span class="built_in">parseInt</span>(second / <span class="number">60</span>)</span><br><span class="line">      <span class="comment">//  获取秒数，秒数取佘，得到整数秒数</span></span><br><span class="line">      second = <span class="built_in">parseInt</span>(second % <span class="number">60</span>)</span><br><span class="line">      <span class="comment">//  如果分钟大于60，将分钟转换成小时</span></span><br><span class="line">      <span class="keyword">if</span> (minute &gt; <span class="number">60</span>) &#123;</span><br><span class="line">        <span class="comment">//  获取小时，获取分钟除以60，得到整数小时</span></span><br><span class="line">        hour = <span class="built_in">parseInt</span>(minute / <span class="number">60</span>)</span><br><span class="line">        <span class="comment">//  获取小时后取佘的分，获取分钟除以60取佘的分</span></span><br><span class="line">        minute = <span class="built_in">parseInt</span>(minute % <span class="number">60</span>)</span><br><span class="line">        <span class="comment">//  如果小时大于24，将小时转换成天</span></span><br><span class="line">        <span class="comment">//  if (hour &gt; 23) &#123;</span></span><br><span class="line">        <span class="comment">//    //  获取天数，获取小时除以24，得到整天数</span></span><br><span class="line">        <span class="comment">//    day = parseInt(hour / 24)</span></span><br><span class="line">        <span class="comment">//    //  获取天数后取余的小时，获取小时除以24取余的小时</span></span><br><span class="line">        <span class="comment">//    hour = parseInt(hour % 24)</span></span><br><span class="line">        <span class="comment">//  &#125;</span></span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">let</span> result;</span><br><span class="line">    <span class="keyword">if</span>(<span class="built_in">parseInt</span>(second)&lt;<span class="number">9</span>)&#123;</span><br><span class="line">        result = <span class="string">&#x27;0&#x27;</span> + <span class="built_in">parseInt</span>(second)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        result = <span class="string">&#x27;&#x27;</span> + <span class="built_in">parseInt</span>(second)</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span> (minute &lt; <span class="number">9</span>) &#123;</span><br><span class="line">      result = <span class="string">&#x27;0&#x27;</span> + <span class="built_in">parseInt</span>(minute) + <span class="string">&#x27;:&#x27;</span> + result</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">      result = <span class="string">&#x27;&#x27;</span> + <span class="built_in">parseInt</span>(minute) + <span class="string">&#x27;:&#x27;</span> + result</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (hour &gt; <span class="number">0</span>) &#123;</span><br><span class="line">      result = <span class="string">&#x27;0&#x27;</span> + <span class="built_in">parseInt</span>(hour) + <span class="string">&#x27;:&#x27;</span> + result</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//  if (day &gt; 0) &#123;</span></span><br><span class="line">    <span class="comment">//    result = &#x27;&#x27; + parseInt(day) + &#x27;天&#x27; + result</span></span><br><span class="line">    <span class="comment">//  &#125;</span></span><br><span class="line">    <span class="comment">// console.log(&#x27;result：&#x27;, result)</span></span><br><span class="line">    <span class="keyword">return</span> result</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure> 
+      <!-- reward -->
       
     </div>
-  </div>
-  
-  
+    
 
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+    </footer>
+  </div>
+
+   
   
+   
+  
+</article>
+
 </section>
       <footer class="footer">
   <div class="outer">
@@ -189,6 +180,10 @@
     
     <li class="nav-item">
       <a class="nav-item-link" href="/about">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/%E5%B0%8F%E6%8F%92%E4%BB%B6">小插件</a>
     </li>
     
     <li class="nav-item">
