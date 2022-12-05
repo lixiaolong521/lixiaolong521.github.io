@@ -211,8 +211,8 @@ html {
 }
 @font-face {
     font-family: 'AaNSBFWDRG';
-    src: url('../css/fonts/YEFONTRuanMengOuBaoTi-Regylar.woff2') format('woff2'),
-        url('../css/fonts/YEFONTRuanMengOuBaoTi-Regylar.woff') format('woff');
+    src: url('../css/fonts/-W1.woff2') format('woff2'),
+        url('../css/fonts/-W1.woff') format('woff');
 }
 body {
     position: relative;
@@ -2089,7 +2089,7 @@ a.toc-link {
 }
 
 .article-entry .highlight .gutter pre {
-    text-align: right;
+    text-align: center;
     padding-right: 20px
 }
 
