@@ -121,7 +121,105 @@ hexo s
       </tags>
   </entry>
   <entry>
-    <title>javascript2022.12.0笔记</title>
+    <title>nodejs笔记1</title>
+    <url>/2022/12/12/nodejs%E7%AC%94%E8%AE%B01/</url>
+    <content><![CDATA[<h6 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h6><ul>
+<li>单线程，异步，非阻塞</li>
+<li>统一API</li>
+</ul>
+<h6 id="查看是否安装成功"><a href="#查看是否安装成功" class="headerlink" title="查看是否安装成功"></a>查看是否安装成功</h6><ul>
+<li>node -v  &#x2F;&#x2F; v16.18.0</li>
+</ul>
+<h6 id="Nvm"><a href="#Nvm" class="headerlink" title="Nvm"></a>Nvm</h6><ul>
+<li>功能：切换不同的node版本,方便管理</li>
+</ul>
+<ol>
+<li>打开 <a href="https://github.com/coreybutler/nvm-windows/releases">https://github.com/coreybutler/nvm-windows/releases</a></li>
+<li>找到并下载，安装nvm-setup.exe<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">// 命令</span><br><span class="line">nvm version 查看是否安装成功 </span><br><span class="line">nvm list 显示已安装的node版本</span><br><span class="line">nvm install 版本 安装指定版本的node</span><br><span class="line">nvm node_mirror https://npmmirror.com/mirrors/node/ 配置nvm的镜像服务器</span><br><span class="line">nvm install latest 安装最新版</span><br><span class="line">nvm install lts 安装长期维护版</span><br><span class="line">nvm use 版本 指定要使用的node版本</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h6 id="nodejs-和-JavaScript有什么区别"><a href="#nodejs-和-JavaScript有什么区别" class="headerlink" title="nodejs 和 JavaScript有什么区别"></a>nodejs 和 JavaScript有什么区别</h6><ul>
+<li>ECMAscript（node有）、（DOM和BOM）node没有</li>
+</ul>
+<hr>
+<h5 id="异步"><a href="#异步" class="headerlink" title="异步"></a>异步</h5><h6 id="进程和线程"><a href="#进程和线程" class="headerlink" title="进程和线程"></a>进程和线程</h6><p>进程：程序运行的环境</p>
+<p>线程：实际运算的东西</p>
+<h6 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h6><p>同步：</p>
+<ul>
+<li>情况代码自上而下执行</li>
+<li>前面代码不执行后面的代码也不会执行</li>
+<li>同步的代码会出现阻塞的情况</li>
+<li>一行代码会影响到整个程序的执行</li>
+</ul>
+<h6 id="异步-1"><a href="#异步-1" class="headerlink" title="异步"></a>异步</h6><p>异步：</p>
+<ul>
+<li><p>一段代码不会影响其他代码执行</p>
+</li>
+<li><p>异步问题：异步的代码无法通过return来设置返回值</p>
+<p>  特点：</p>
+<ol>
+<li>不会阻塞其他代码的执行</li>
+<li>需要通过回调函数来返回结果</li>
+</ol>
+<p>  基于回调函数的异步带来的问题：</p>
+<ol>
+<li>代码可读性差</li>
+<li>可调性差</li>
+</ol>
+<p>  解决问题：</p>
+<ol>
+<li>代替回调函数来返回结果</li>
+<li>Promise：<ul>
+<li>Promise是一个可以用来存储数据的对象<ul>
+<li>Promise存储数据的方式比较特殊</li>
+<li>这种特殊的方式使得Promise可以用来存储异步调用的数据</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h5><p>异步调用必须要通过回调来返回数据，当我们进行一些复杂的调用时，会出现“回调函数”</p>
+<p>问题：<br>    当异步必须通过回调函数来返回结果，回调函数一多就很痛苦</p>
+<h6 id="创建promise"><a href="#创建promise" class="headerlink" title="创建promise"></a>创建promise</h6><p>创建Promise时，构造函数中需要一个函数作为参数<br>Promise构造函数的回调函数，它会在创建Promise时调用，调用时会有两个参数传递进去</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// resolve 和 reject 是两个函数，通过这两个函数可以向Promise中存储数据</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">// resolve在执行正常时存储数据，reject在执行错误时存储数据</span></span><br><span class="line">    <span class="comment">//通过函数来向Promise中添加数据，好处就是可以用来添加异步调用的数据</span></span><br><span class="line">    <span class="title function_">reject</span>(<span class="string">&quot;哈哈&quot;</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h6 id="从Promise中读取数据"><a href="#从Promise中读取数据" class="headerlink" title="从Promise中读取数据"></a>从Promise中读取数据</h6><p>可以通过Promise的实例方法then来读取Promise中存储的数据</p>
+<p>then需要两个回调函数作为参数，回调函数用来获取Promise中的数据</p>
+<ul>
+<li>通过resolve存储的数据，会调用第一个函数返回，可以在第一个函数中编写处理数据的代码</li>
+<li>通过reject存储的数据或者出现异常时，会调用第二个函数返回可以在第二个函数中编写处理异常的代码</li>
+</ul>
+<h6 id="Promise中维护了两个隐藏属性："><a href="#Promise中维护了两个隐藏属性：" class="headerlink" title="Promise中维护了两个隐藏属性："></a>Promise中维护了两个隐藏属性：</h6><ul>
+<li><p>PromiseResult:用来存储数据</p>
+</li>
+<li><p>PromiseState：记录Promise的状态（三种状态）：</p>
+<ul>
+<li>pending（进行中）</li>
+<li>fulfilled（完成） 通过resolve存储数据时</li>
+<li>rejected（拒绝，出错了） 出错了或通过reject存储数据时</li>
+</ul>
+<blockquote>
+<p>state只能修改一次，修改以后永远不会再变</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">流程：</span></span><br><span class="line"><span class="comment">    当Promise创建时，PromiseState初始值为pending，</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    当通过resolve存储数据时 PromiseState 变 为fulfilled（完成），PromiseResult变为存储的数据</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    当我们通过then读取数据时，相当于为Promise设置了回调函数，如果PromiseState变为fulfilled，则调用then的第一个回调函数来返回</span></span><br><span class="line"><span class="comment">    如果PromiseState变为rejected，则调用then的第二个回调函数来返回</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    catch()用法和then类似，但是只需要一个回调函数作为参数</span></span><br><span class="line"><span class="comment">    catch()中的回调函数只会在Promise被拒绝时 才调用</span></span><br><span class="line"><span class="comment">    catch()相当于then(null,reason=&gt;&#123;&#125;)</span></span><br><span class="line"><span class="comment">    catch()就是一个专门处理Promise异常的方法</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    finally()</span></span><br><span class="line"><span class="comment">    无论是正常存储数据还是出现异常了，finally总会执行</span></span><br><span class="line"><span class="comment">    但是finally的回调函数中不会接受到数据</span></span><br><span class="line"><span class="comment">    finally()通常用来编写一些无论成功与否都要执行的代码</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">const</span> promise2 = <span class="keyword">new</span> <span class="title class_">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="title function_">resolve</span>(<span class="string">&quot;哈哈&quot;</span>)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line"><span class="title class_">Promise</span>.<span class="title function_">resolve</span>(<span class="string">&quot;哈哈&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+
+]]></content>
+      <categories>
+        <category>node.js</category>
+      </categories>
+      <tags>
+        <tag>node.js</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>javascript2022.12.05笔记</title>
     <url>/2022/12/04/javascript2022-12-05%E7%AC%94%E8%AE%B0/</url>
     <content><![CDATA[<h3 id="标准库"><a href="#标准库" class="headerlink" title="标准库"></a>标准库</h3><h4 id="Object-对象"><a href="#Object-对象" class="headerlink" title="Object 对象"></a>Object 对象</h4><h5 id="Object"><a href="#Object" class="headerlink" title="Object()"></a>Object()</h5><p>Object本身是一个函数，可以当作工具方法使用，将任意值转为对象。这个方法常用于保证某个值一定是对象。</p>
 <p>如果参数为空（或者为undefined和null），Object()返回一个空对象。</p>
@@ -132,6 +230,28 @@ hexo s
 <p>上面代码中，<strong>Object函数的参数是各种原始类型的值，转换成对象就是原始类型值对应的包装对象。</strong></p>
 <p>如果<strong>Object方法的参数是一个对象，它总是返回该对象</strong>，即不用转换。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [];</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(arr); <span class="comment">// 返回原数组</span></span><br><span class="line">obj === arr <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> value = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(value) <span class="comment">// 返回原对象</span></span><br><span class="line">obj === value <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> fn = <span class="keyword">function</span> (<span class="params"></span>) &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> obj = <span class="title class_">Object</span>(fn); <span class="comment">// 返回原函数</span></span><br><span class="line">obj === fn <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Object(value)与new Object(value)两者的语义是不同的，Object(value)表示将value转成一个对象，new Object(value)则表示新生成一个对象，它的值是value。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> o1 = &#123;<span class="attr">a</span>: <span class="number">1</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> o2 = <span class="keyword">new</span> <span class="title class_">Object</span>(o1);</span><br><span class="line">o1 === o2 <span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = <span class="keyword">new</span> <span class="title class_">Object</span>(<span class="number">123</span>);</span><br><span class="line">obj <span class="keyword">instanceof</span> <span class="title class_">Number</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h5 id="Object-的静态方法"><a href="#Object-的静态方法" class="headerlink" title="Object 的静态方法"></a>Object 的静态方法</h5><p>静态方法：Object对象自身的方法</p>
+<p>Object.keys方法和Object.getOwnPropertyNames方法都用来遍历对象的属性。</p>
+<p>Object.keys方法的参数是一个对象，返回一个数组。数组的成员都是该对象自身的属性名</p>
+<p><strong>区别</strong>：Object.getOwnPropertyNames方法还返回不可枚举的属性名。</p>
+<h6 id="toString-的应用：判断数据类型"><a href="#toString-的应用：判断数据类型" class="headerlink" title="toString() 的应用：判断数据类型"></a>toString() 的应用：判断数据类型</h6><figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;&#125;;</span><br><span class="line">obj.<span class="title function_">toString</span>() <span class="comment">// &quot;[object Object]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>第二个Object表示该值的构造函数。这是一个十分有用的判断数据类型的方法。</p>
+<h6 id="Object-prototype-hasOwnProperty"><a href="#Object-prototype-hasOwnProperty" class="headerlink" title="Object.prototype.hasOwnProperty()"></a>Object.prototype.hasOwnProperty()</h6><p>Object.prototype.hasOwnProperty方法接受一个字符串作为参数，返回一个布尔值，表示该实例对象自身是否具有该属性。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  <span class="attr">p</span>: <span class="number">123</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;p&#x27;</span>) <span class="comment">// true</span></span><br><span class="line">obj.<span class="title function_">hasOwnProperty</span>(<span class="string">&#x27;toString&#x27;</span>) <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，对象obj自身具有p属性，所以返回true。toString属性是继承的，所以返回false</p>
+<h6 id="Object-prototype-toString"><a href="#Object-prototype-toString" class="headerlink" title="Object.prototype.toString"></a>Object.prototype.toString</h6><p>可以看出一个值到底是什么类型。</p>
+<p>写出一个比typeof运算符更准确的类型判断函数。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> type = <span class="keyword">function</span> (<span class="params">o</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> s = <span class="title class_">Object</span>.<span class="property"><span class="keyword">prototype</span></span>.<span class="property">toString</span>.<span class="title function_">call</span>(o);</span><br><span class="line">  <span class="keyword">return</span> s.<span class="title function_">match</span>(<span class="regexp">/\[object (.*?)\]/</span>)[<span class="number">1</span>].<span class="title function_">toLowerCase</span>();</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="title function_">type</span>(&#123;&#125;); <span class="comment">// &quot;object&quot;</span></span><br><span class="line"><span class="title function_">type</span>([]); <span class="comment">// &quot;array&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="number">5</span>); <span class="comment">// &quot;number&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="literal">null</span>); <span class="comment">// &quot;null&quot;</span></span><br><span class="line"><span class="title function_">type</span>(); <span class="comment">// &quot;undefined&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="regexp">/abcd/</span>); <span class="comment">// &quot;regex&quot;</span></span><br><span class="line"><span class="title function_">type</span>(<span class="keyword">new</span> <span class="title class_">Date</span>()); <span class="comment">// &quot;date&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
 
 
 
